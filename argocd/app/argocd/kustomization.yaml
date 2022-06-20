@@ -1,0 +1,6 @@
+resources:
+- github.com/argoproj/argo-cd/manifests/cluster-install?ref=v2.4.0
+
+# changes to config maps
+patchesStrategicMerge:
+- ./overlays/argocd-cm.yaml
