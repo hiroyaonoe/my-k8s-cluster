@@ -21,12 +21,14 @@ argocd account update-password
 
 ## Manage ArgoCD using ArgoCD
 ```
-kubectl kustomize argocd/app/argocd | kubectl apply -f -
-kubectl apply -f argocd/app/argocd/application.yaml
+kubectl kustomize argocd/minifests/argocd | kubectl apply -f -
 ```
 以降はArgoCDでSync
+
+app-of-appsによってapplicationsに置かれたApplicationはAuto Syncされる
 
 # References
 - https://argo-cd.readthedocs.io/en/stable/getting_started/
 - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/
 https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#manage-argo-cd-using-argo-cd
+- https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/#app-of-apps-pattern
