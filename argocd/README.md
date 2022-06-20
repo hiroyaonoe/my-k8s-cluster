@@ -24,9 +24,11 @@ argocd login localhost:8080
 argocd account update-password
 ```
 
+その後 Manage ArgoCD using ArgoCD へ
+
 ## Manage ArgoCD using ArgoCD
 ```
-kubectl kustomize argocd/manifests/argocd | kubectl apply -f -
+kubectl kustomize argocd/manifests/argocd | kubectl apply -n argocd -f -
 ```
 以降はArgoCDでSync
 
