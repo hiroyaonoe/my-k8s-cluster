@@ -21,7 +21,8 @@ argocd account update-password
 
 ## Manage ArgoCD using ArgoCD
 ```
-kubectl kustomize argocd/app/argocd | kubectlapply -f -
+kubectl kustomize argocd/app/argocd | kubectl apply -f -
+kubectl apply -f argocd/app/argocd/application.yaml
 ```
 以降はArgoCDでSync
 
