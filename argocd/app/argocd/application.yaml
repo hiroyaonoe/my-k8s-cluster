@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/hiroyaonoe/my-k8s-cluster.git
-    targetRevision: master
+    targetRevision: main
     path: ./argocd/app/argocd
   destination:
     server: https://kubernetes.default.svc
