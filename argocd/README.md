@@ -1,3 +1,8 @@
+# 新しいサービスのデプロイ方法
+- `manifests`にディレクトリを作ってmainfestを配置(manifestsを外部レポジトリから取ってくるなら不要)
+- `applications`にファイルを作ってApplicationを作成
+- argocdからsync
+
 # ArgoCDのGUIコンソールの見方
 ```
 ssh -L 8080:localhost:8080 <server>
