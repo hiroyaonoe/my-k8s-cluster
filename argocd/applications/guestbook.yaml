@@ -5,7 +5,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/argoproj/argocd-example-apps
+    repoURL: https://github.com/argoproj/argocd-example-apps.git
     targetRevision: master
     path: guestbook
   destination:
