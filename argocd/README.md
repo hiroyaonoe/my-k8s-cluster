@@ -5,11 +5,9 @@
 
 # ArgoCDのGUIコンソールの見方
 ```
-# ufwによって8080ポートをallowしてるなら普通にssh <server> (sshするなら22も忘れずに)
-ssh -L 8080:localhost:8080 <server>
-kubectl port-forward svc/argocd-server -n argocd --address 0.0.0.0 8080:443
+kubectl port-forward svc/argocd-server -n argocd --address 0.0.0.0 9000:443
 ```
-`http://localhost:8080` (`http://[server]:8080`) にアクセス
+`http://[server]:9000` にアクセス
 
 # ArgoCDをインストールした手順
 ```
@@ -19,8 +17,8 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 # argocdのcliツールをインストール
 ## adminのパスワード取得
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
-kubectl port-forward svc/argocd-server -n argocd 8080:443
-argocd login localhost:8080
+kubectl port-forward svc/argocd-server --address 0.0.0.0 -n argocd 9000:443
+argocd login localhost:9000
 ## username: admin, password: 上で取得したやつ
 argocd account update-password
 ```
