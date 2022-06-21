@@ -6,7 +6,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/argoproj/argocd-example-apps.git
-    targetRevision: master
+    targetRevision: 53e28ff20cc530b9ada2173fbbd64d48338583ba
     path: guestbook
   destination:
     server: https://kubernetes.default.svc
