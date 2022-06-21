@@ -1,5 +1,5 @@
 resources:
-- github.com/argoproj/argo-cd/manifests/cluster-install?ref=v2.4.0
+- https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.0/manifests/install.yaml
 - app-of-apps.yaml
 
 patchesStrategicMerge:
