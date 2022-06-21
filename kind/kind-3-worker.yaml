@@ -11,10 +11,10 @@ nodes:
         node-labels: "ingress-ready=true"
   extraPortMappings:
   - containerPort: 80
-    hostPort: 80
+    hostPort: 8080
     protocol: TCP
   - containerPort: 443
-    hostPort: 443
+    hostPort: 8090
     protocol: TCP
 - role: worker
   kubeadmConfigPatches:
@@ -25,10 +25,10 @@ nodes:
         node-labels: "ingress-ready=true"
   extraPortMappings:
   - containerPort: 80
-    hostPort: 80
+    hostPort: 8081
     protocol: TCP
   - containerPort: 443
-    hostPort: 443
+    hostPort: 8091
     protocol: TCP
 - role: worker
   kubeadmConfigPatches:
@@ -39,10 +39,10 @@ nodes:
         node-labels: "ingress-ready=true"
   extraPortMappings:
   - containerPort: 80
-    hostPort: 80
+    hostPort: 8082
     protocol: TCP
   - containerPort: 443
-    hostPort: 443
+    hostPort: 8092
     protocol: TCP
 - role: worker
   kubeadmConfigPatches:
@@ -53,9 +53,9 @@ nodes:
         node-labels: "ingress-ready=true"
   extraPortMappings:
   - containerPort: 80
-    hostPort: 80
+    hostPort: 8083
     protocol: TCP
   - containerPort: 443
-    hostPort: 443
+    hostPort: 8093
     protocol: TCP
 
