@@ -7,7 +7,7 @@ spec:
   source:
     repoURL: https://github.com/hiroyaonoe/my-k8s-cluster.git
     targetRevision: main
-    path: ./argocd/manifests/argocd
+    path: argocd/manifests/argocd
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
