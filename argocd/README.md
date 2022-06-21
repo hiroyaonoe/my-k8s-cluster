@@ -5,10 +5,11 @@
 
 # ArgoCDのGUIコンソールの見方
 ```
+# ufwによって8080ポートをallowしてるなら普通にssh <server> (sshするなら22も忘れずに)
 ssh -L 8080:localhost:8080 <server>
-kubectl port-forward svc/argocd-server -n argocd 8080:443
+kubectl port-forward svc/argocd-server -n argocd --address 0.0.0.0 8080:443
 ```
-http://localhost:8080 にアクセス
+`http://localhost:8080` (`http://[server]:8080`) にアクセス
 
 # ArgoCDをインストールした手順
 ```
