@@ -1,3 +1,0 @@
-resources:
-- https://raw.githubusercontent.com/argoproj/argocd-example-apps/5c2d89b897c4df42e06f94622f857dc4d7adc8f8/guestbook/guestbook-ui-deployment.yaml
-- https://raw.githubusercontent.com/argoproj/argocd-example-apps/5c2d89b897c4df42e06f94622f857dc4d7adc8f8/guestbook/guestbook-ui-svc.yaml

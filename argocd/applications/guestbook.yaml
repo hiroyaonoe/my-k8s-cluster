@@ -5,9 +5,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/hiroyaonoe/my-k8s-cluster.git
-    targetRevision: main
-    path: ./argocd/manifests/guestbook
+    repoURL: https://github.com/argoproj/argocd-example-apps
+    targetRevision: master
+    path: guestbook
   destination:
     server: https://kubernetes.default.svc
     namespace: guestbook
