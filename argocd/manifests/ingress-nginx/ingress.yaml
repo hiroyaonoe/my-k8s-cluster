@@ -6,10 +6,12 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    - host: onoe-k8s.internal
-      http:
-        paths:
-          - path: /argocd
-            backend:
-              serviceName: argocd-server
-              servicePort: 443
+  - http:
+      paths:
+      - pathType: Prefix
+        path: /argocd
+        backend:
+          service:
+            name: argocd-server
+            port:
+              number: 443
