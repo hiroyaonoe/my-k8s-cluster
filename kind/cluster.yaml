@@ -11,51 +11,12 @@ nodes:
         node-labels: "ingress-ready=true"
   extraPortMappings:
   - containerPort: 80
-    hostPort: 8080
+    hostPort: 80
     protocol: TCP
   - containerPort: 443
-    hostPort: 8090
+    hostPort: 443
     protocol: TCP
 - role: control-plane
-  kubeadmConfigPatches:
-  - |
-    kind: InitConfiguration
-    nodeRegistration:
-      kubeletExtraArgs:
-        node-labels: "ingress-ready=true"
-  extraPortMappings:
-  - containerPort: 80
-    hostPort: 8081
-    protocol: TCP
-  - containerPort: 443
-    hostPort: 8091
-    protocol: TCP
 - role: worker
-  kubeadmConfigPatches:
-  - |
-    kind: InitConfiguration
-    nodeRegistration:
-      kubeletExtraArgs:
-        node-labels: "ingress-ready=true"
-  extraPortMappings:
-  - containerPort: 80
-    hostPort: 8082
-    protocol: TCP
-  - containerPort: 443
-    hostPort: 8092
-    protocol: TCP
 - role: worker
-  kubeadmConfigPatches:
-  - |
-    kind: InitConfiguration
-    nodeRegistration:
-      kubeletExtraArgs:
-        node-labels: "ingress-ready=true"
-  extraPortMappings:
-  - containerPort: 80
-    hostPort: 8083
-    protocol: TCP
-  - containerPort: 443
-    hostPort: 8093
-    protocol: TCP
 
