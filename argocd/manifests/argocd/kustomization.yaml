@@ -1,6 +1,7 @@
 resources:
 - https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.0/manifests/install.yaml
 - app-of-apps.yaml
+- ingress.yaml
 
 patchesStrategicMerge:
 - overlays/argocd-cm.yaml
