@@ -5,4 +5,4 @@ resources:
 
 patchesStrategicMerge:
 - overlays/argocd-cm.yaml
-- oberlays/argocd-server.yaml
+- overlays/argocd-server.yaml
