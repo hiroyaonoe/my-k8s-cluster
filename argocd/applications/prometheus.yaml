@@ -39,3 +39,21 @@ spec:
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus-ingress
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/hiroyaonoe/my-k8s-cluster.git
+    targetRevision: main
+    path: argocd/manifests/prometheus
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true

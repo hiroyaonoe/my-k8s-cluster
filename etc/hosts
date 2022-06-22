@@ -1,3 +1,4 @@
 192.168.3.130 onoe-ubuntu.internal
 192.168.3.130 argocd.onoe-ubuntu.internal
 192.168.3.130 grpc.argocd.onoe-ubuntu.internal
+192.168.3.130 grafana.onoe-ubuntu.internal
