@@ -4,10 +4,7 @@
 - argocdからsync
 
 # ArgoCDのGUIコンソールの見方
-```
-kubectl port-forward svc/argocd-server -n argocd --address 0.0.0.0 9000:443
-```
-`http://[server]:9000` にアクセス
+`https://argocd.onoe-ubuntu.internal/` にアクセス(接続端末の`/etc/hosts`を書き換える必要あり)
 
 # ArgoCDをインストールした手順
 ```
@@ -38,3 +35,7 @@ app-of-appsによってapplicationsに置かれたApplicationはAuto Syncされ�
 - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/
 https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#manage-argo-cd-using-argo-cd
 - https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/#app-of-apps-pattern
+
+## ingress-nginx, argocd, kind
+- https://argo-cd.readthedocs.io/en/stable/operator-manual/ingress/#option-2-multiple-ingress-objects-and-hosts 
+- https://m1yam0t0.com/posts/2021/04/argocd-in-kind/

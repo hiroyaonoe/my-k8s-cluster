@@ -1,15 +1,50 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress
+  name: argocd-server-http-ingress
+  namespace: argocd
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+spec:
+  rules:
+  - http:
+      paths:
+        - pathType: Prefix
+          path: /
+          backend:
+            service:
+              name: argocd-server
+              port: 
+                number: 80
+    host: argocd.onoe-ubuntu.internal
+  tls:
+  - hosts:
+    - argocd.onoe-ubuntu.internal
+    secretName: argocd-secret # do not change, this is provided by Argo CD
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd-server-grpc-ingress
+  namespace: argocd
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
 spec:
   rules:
   - http:
       paths:
       - pathType: Prefix
-        path: /argocd
+        path: /
         backend:
           service:
             name: argocd-server
             port:
               number: 443
+    host: grpc.argocd.onoe-ubuntu.internal
+  tls:
+  - hosts:
+    - grpc.argocd.onoe-ubuntu.internal
+    secretName: argocd-secret # do not change, this is provided by Argo CD
