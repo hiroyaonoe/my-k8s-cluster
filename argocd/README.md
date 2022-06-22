@@ -9,7 +9,7 @@
 | service | endpoint |
 |:-------:|:--------:|
 | argocd | https://argocd.onoe-ubuntu.internal |
-| grafana | https://grafana.onoe-ubuntu.internal |
+| grafana | http://grafana.onoe-ubuntu.internal |
 
 # ArgoCDのインストール手順
 ```
