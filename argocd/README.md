@@ -3,8 +3,13 @@
 - `applications`にファイルを作ってApplicationを作成
 - argocdからsync
 
-# ArgoCDのGUIコンソールの見方
-`https://argocd.onoe-ubuntu.internal/` にアクセス(接続端末の`/etc/hosts`を書き換える必要あり)
+# GUIコンソールエンドポイント一覧
+`etc/hosts`を書き換えておくこと
+
+| service | endpoint |
+|:-------:|:--------:|
+| argocd | https://argocd.onoe-ubuntu.internal |
+| grafana | https://grafana.onoe-ubuntu.internal |
 
 # ArgoCDのインストール手順
 ```
