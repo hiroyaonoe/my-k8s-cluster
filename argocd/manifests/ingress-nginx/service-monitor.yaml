@@ -1,4 +1,5 @@
 # https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/README.md#prometheus-metrics
+apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: ingress-nginx-controller
