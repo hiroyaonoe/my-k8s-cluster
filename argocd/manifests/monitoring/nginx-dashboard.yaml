@@ -4,7 +4,7 @@ kind: ConfigMap
 metadata:
   name: nginx-dashboard
   labels:
-    grafana_dashboard: "nginx"
+    grafana_dashboard: "1"
 data:
   nginx.json: |
     {

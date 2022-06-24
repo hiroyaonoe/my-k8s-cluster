@@ -40,6 +40,7 @@ spec:
             dashboards:
               enabled: true                        # To enable dashboards as configMaps automatically picked up by Grafana
               label: grafana_dashboard             # Label the configMaps should have in order to be added
+              labelValue: "1"
               folder: /tmp/dashboards
               searchNamespace: ALL                 # To look for dashboard configMaps in all namespaces
   destination:

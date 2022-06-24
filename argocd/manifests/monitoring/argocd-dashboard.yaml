@@ -4,7 +4,7 @@ kind: ConfigMap
 metadata:
   name: argocd-dashboard
   labels:
-    grafana_dashboard: "argocd"
+    grafana_dashboard: "1"
 data:
   argocd.json: |
     {
