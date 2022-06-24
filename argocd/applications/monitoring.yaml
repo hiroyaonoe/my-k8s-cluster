@@ -33,6 +33,15 @@ spec:
     helm:
       releaseName: prometheus
       skipCrds: true
+      values: |
+        grafana:
+          defaultDashboardsTimezone: "browser"
+          sidecar:                              
+            dashboards:
+              enabled: true                        # To enable dashboards as configMaps automatically picked up by Grafana
+              label: grafana_dashboard             # Label the configMaps should have in order to be added
+              folder: /tmp/dashboards
+              searchNamespace: ALL                 # To look for dashboard configMaps in all namespaces
   destination:
     server: "https://kubernetes.default.svc"
     namespace: monitoring
