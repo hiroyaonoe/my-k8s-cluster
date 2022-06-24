@@ -8,6 +8,10 @@ metadata:
     prometheus.io/scrape: "true"
     prometheus.io/port: "10254"
 spec:
-  ports:
-    - name: prometheus
-      containerPort: 10254
+  template:
+    spec:
+      containers:
+      - name: controller
+        ports:
+        - name: prometheus
+          containerPort: 10254
