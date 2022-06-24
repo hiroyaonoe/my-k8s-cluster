@@ -1663,7 +1663,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: nginx-dashboard
+  name: nginx-rhp-dashboard
   labels:
     grafana_dashboard: "1"
 data:
