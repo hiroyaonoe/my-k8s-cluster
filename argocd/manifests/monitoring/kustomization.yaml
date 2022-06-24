@@ -1,0 +1,14 @@
+resources:
+- ingress.yaml
+
+configMapGenerator:
+  - name: argocd-dashboard
+    files:
+      - argocd.json=https://raw.githubusercontent.com/argoproj/argo-cd/9d4c940a5afb19a08af1e4ab315fb32c13a6297a/examples/dashboard.json
+  - name: nginx-dashboard
+    files:
+      - https://raw.githubusercontent.com/kubernetes/ingress-nginx/6d4ba5f2603082031eb9b3c4391cefa591a6c85e/deploy/grafana/dashboards/nginx.json
+      - https://raw.githubusercontent.com/kubernetes/ingress-nginx/6d4ba5f2603082031eb9b3c4391cefa591a6c85e/deploy/grafana/dashboards/request-handling-performance.json
+
+patchesStrategicMerge:
+  - overlays/configmap.yaml
