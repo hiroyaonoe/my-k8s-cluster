@@ -11,9 +11,9 @@ metadata:
     release: prometheus
 spec:
   ports:
-    - name: prometheus
+    - name: metrics
       port: 10254
-      targetPort: prometheus
+      targetPort: metrics
 ---
 apiVersion: v1
 kind: Service
@@ -27,6 +27,6 @@ metadata:
     release: prometheus
 spec:
   ports:
-    - name: prometheus
+    - name: metrics
       port: 10254
-      targetPort: prometheus
+      targetPort: metrics

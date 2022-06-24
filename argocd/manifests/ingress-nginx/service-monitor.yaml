@@ -1,0 +1,25 @@
+# https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/README.md#prometheus-metrics
+kind: ServiceMonitor
+metadata:
+  name: ingress-nginx-controller
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: ingress-nginx-controller
+  endpoints:
+  - port: metrics
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: ingress-nginx-controller-admission
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: ingress-nginx-controller-admission
+  endpoints:
+  - port: metrics

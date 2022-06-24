@@ -15,5 +15,5 @@ spec:
       containers:
       - name: controller
         ports:
-        - name: prometheus
+        - name: metrics
           containerPort: 10254
