@@ -4,11 +4,7 @@ kind: Service
 metadata:
   name: ingress-nginx-controller-metrics
   namespace: ingress-nginx
-  annotations:
-    prometheus.io/scrape: "true"
-    prometheus.io/port: "10254"
   labels:
-    release: prometheus
     app.kubernetes.io/name: ingress-nginx-controller-metrics
 spec:
   type: ClusterIP

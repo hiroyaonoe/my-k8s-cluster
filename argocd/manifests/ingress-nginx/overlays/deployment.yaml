@@ -4,11 +4,6 @@ kind: Deployment
 metadata:
   name: ingress-nginx-controller
   namespace: ingress-nginx
-  annotations:
-    prometheus.io/scrape: "true"
-    prometheus.io/port: "10254"
-  labels:
-    release: prometheus
 spec:
   template:
     spec:
