@@ -1,0 +1,28 @@
+# https://kubernetes.github.io/ingress-nginx/user-guide/monitoring/#before-you-begin
+apiVersion: v1
+kind: Service
+metadata:
+  name: ingress-nginx-controller
+  namespace: ingress-nginx
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "10254"
+spec:
+  ports:
+    - name: prometheus
+      port: 10254
+      targetPort: prometheus
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ingress-nginx-controller-admission
+  namespace: ingress-nginx
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "10254"
+spec:
+  ports:
+    - name: prometheus
+      port: 10254
+      targetPort: prometheus
