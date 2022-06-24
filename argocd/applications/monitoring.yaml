@@ -31,7 +31,7 @@ spec:
     repoURL: https://prometheus-community.github.io/helm-charts
     targetRevision: 36.0.3
     helm:
-      releaseName: prometheus
+      releaseName: nginx
       skipCrds: true
       values: |
         grafana:
