@@ -1,5 +1,6 @@
 resources:
 - https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.2.1/deploy/static/provider/kind/deploy.yaml
+- service-monitor.yaml
 
 patchesStrategicMerge:
 - overlays/ingress-class.yaml
