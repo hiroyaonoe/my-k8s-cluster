@@ -43,13 +43,13 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prometheus-ingress
+  name: monitoring
 spec:
   project: default
   source:
     repoURL: https://github.com/hiroyaonoe/my-k8s-cluster.git
     targetRevision: main
-    path: argocd/manifests/prometheus
+    path: argocd/manifests/monitoring
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
