@@ -5,15 +5,9 @@ metadata:
 spec:
   project: default
   source:
-    chart: ingress-nginx
-    repoURL: https://kubernetes.github.io/ingress-nginx
-    targetRevision: 4.1.4
-    helm:
-      releaseName: prometheus
-      values: |
-        ingressClassResource:
-          # -- Is this the default ingressClass for the cluster
-          default: true
+    repoURL: https://github.com/hiroyaonoe/my-k8s-cluster.git
+    targetRevision: main
+    path: argocd/manifests/ingress-nginx
   destination:
     server: "https://kubernetes.default.svc"
     namespace: ingress-nginx
