@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ingress-nginx-controller
+  name: ingress-nginx-controller-metrics
   namespace: ingress-nginx
   annotations:
     prometheus.io/scrape: "true"
@@ -10,23 +10,12 @@ metadata:
   labels:
     release: prometheus
 spec:
+  type: ClusterIP
   ports:
     - name: metrics
       port: 10254
       targetPort: metrics
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: ingress-nginx-controller-admission
-  namespace: ingress-nginx
-  annotations:
-    prometheus.io/scrape: "true"
-    prometheus.io/port: "10254"
-  labels:
-    release: prometheus
-spec:
-  ports:
-    - name: metrics
-      port: 10254
-      targetPort: metrics
+  selector:
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/instance: ingress-nginx
+    app.kubernetes.io/name: ingress-nginx
