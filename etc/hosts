@@ -1,5 +1,5 @@
-192.168.3.130 onoe-ubuntu.internal
-192.168.3.130 argocd.onoe-ubuntu.internal
-192.168.3.130 grpc.argocd.onoe-ubuntu.internal
-192.168.3.130 grafana.onoe-ubuntu.internal
-192.168.3.130 prometheus.onoe-ubuntu.internal
+<ubuntu-ip> onoe-ubuntu.internal
+<ubuntu-ip> argocd.onoe-ubuntu.internal
+<ubuntu-ip> grpc.argocd.onoe-ubuntu.internal
+<ubuntu-ip> grafana.onoe-ubuntu.internal
+<ubuntu-ip> prometheus.onoe-ubuntu.internal
