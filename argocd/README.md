@@ -35,6 +35,8 @@ kubectl kustomize argocd/manifests/argocd | kubectl apply -n argocd -f -
 
 app-of-appsによってapplicationsに置かれたApplicationはAuto Syncされる
 
+(prometheus-crdsを最初にsyncしないと上手くいかないので注意)
+
 # References
 - https://argo-cd.readthedocs.io/en/stable/getting_started/
 - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/
