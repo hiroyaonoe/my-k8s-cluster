@@ -12,6 +12,30 @@
 | grafana    | http://grafana.onoe-ubuntu.internal    |
 | prometheus | http://prometheus.onoe-ubuntu.internal |
 
+# Ciliumのインストール手順
+kindでCNIを無効にしてるので最初にこれをやる  
+(ref: https://docs.cilium.io/en/stable/gettingstarted/kind/)
+```
+helm repo add cilium https://helm.cilium.io/
+
+docker pull quay.io/cilium/cilium:v1.11.6
+kind load docker-image quay.io/cilium/cilium:v1.11.6
+
+helm install cilium cilium/cilium --version 1.11.6 \
+   --namespace kube-system \
+   --set kubeProxyReplacement=partial \
+   --set hostServices.enabled=false \
+   --set externalIPs.enabled=true \
+   --set nodePort.enabled=true \
+   --set hostPort.enabled=true \
+   --set bpf.masquerade=false \
+   --set image.pullPolicy=IfNotPresent \
+   --set ipam.mode=kubernetes
+
+# 状態確認
+cilium status
+```
+
 # ArgoCDのインストール手順
 ```
 kubectl create namespace argocd
@@ -47,3 +71,6 @@ https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#mana
 ## ingress-nginx, argocd, kind
 - https://argo-cd.readthedocs.io/en/stable/operator-manual/ingress/#option-2-multiple-ingress-objects-and-hosts 
 - https://m1yam0t0.com/posts/2021/04/argocd-in-kind/
+
+## Cilium
+- https://docs.cilium.io/en/stable/gettingstarted/kind/
