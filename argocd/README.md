@@ -6,10 +6,11 @@
 # GUIコンソールエンドポイント一覧
 `etc/hosts`を書き換えておくこと
 
-| service | endpoint |
-|:-------:|:--------:|
-| argocd | https://argocd.onoe-ubuntu.internal |
-| grafana | http://grafana.onoe-ubuntu.internal |
+| service    | endpoint                               |
+|:----------:|:--------------------------------------:|
+| argocd     | https://argocd.onoe-ubuntu.internal    |
+| grafana    | http://grafana.onoe-ubuntu.internal    |
+| prometheus | http://prometheus.onoe-ubuntu.internal |
 
 # ArgoCDのインストール手順
 ```
