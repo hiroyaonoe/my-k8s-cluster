@@ -62,6 +62,13 @@ app-of-appsによってapplicationsに置かれたApplicationはAuto Syncされ�
 
 (prometheus-crdsを最初にsyncしないと上手くいかないので注意)
 
+### Syncされない場合
+```
+ssh ubuntu -L 8080:localhost:8080
+kubectl port-forward svc/argocd-server --address 0.0.0.0 -n argocd 8080:443
+```
+で`http://localhost:8080/`にアクセスして、prometheus-crdsから順に手動でSyncする
+
 # References
 - https://argo-cd.readthedocs.io/en/stable/getting_started/
 - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/
