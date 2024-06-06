@@ -44,9 +44,22 @@ spec:
                       storage: 5Gi     # Size of volume used by prometheus'. Can be modified depending on  required retention
         grafana:
           persistence:
-            type: statefulset          # To deploy Grafana as a StatefulSet
+            type: pvc
             enabled: true
-            size: 5Gi
+            storageClassName: local-storage
+            accessModes:
+              - ReadWriteOnce
+            size: 10Gi
+            # annotations: {}
+            finalizers:
+              - kubernetes.io/pvc-protection
+            # selectorLabels: {}
+            ## Sub-directory of the PV to mount. Can be templated.
+            # subPath: ""
+            ## Name of an existing PVC. Can be templated.
+            # existingClaim:
+            ## Extra labels to apply to a PVC.
+            extraPvcLabels: {}
           defaultDashboardsTimezone: "browser"
           sidecar:                              
             dashboards:
