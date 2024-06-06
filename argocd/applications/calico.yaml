@@ -13,4 +13,5 @@ spec:
     namespace: calico-system
   syncPolicy:
     syncOptions:
+    - Replace=true
     - CreateNamespace=true
