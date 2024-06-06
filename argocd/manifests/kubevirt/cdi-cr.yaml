@@ -4,9 +4,10 @@ kind: CDI
 metadata:
   name: cdi
 spec:
-  config:
-    featureGates:
-    - HonorWaitForFirstConsumer
+  # # https://github.com/kubevirt/containerized-data-importer/blob/main/doc/waitforfirstconsumer-storage-handling.md
+  # config:
+  #   featureGates:
+  #   - HonorWaitForFirstConsumer
   imagePullPolicy: IfNotPresent
   infra:
     nodeSelector:
