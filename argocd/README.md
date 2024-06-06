@@ -58,6 +58,11 @@ kubectl port-forward svc/argocd-server --address 0.0.0.0 -n argocd 8080:443
 ```
 で`http://localhost:8080/`にアクセスして、prometheus-crdsから順に手動でSyncする
 
+# ingress-nginx
+```
+kubectl label nodes onoe-ubuntu ingress-ready=true
+```
+
 # References
 - https://argo-cd.readthedocs.io/en/stable/getting_started/
 - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/
