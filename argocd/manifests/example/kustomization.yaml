@@ -1,3 +1,4 @@
 resources:
 - ubuntu.yaml
 - nginx.yaml
+- fedora.yaml
