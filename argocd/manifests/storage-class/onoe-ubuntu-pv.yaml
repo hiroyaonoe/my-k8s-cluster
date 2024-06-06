@@ -1,0 +1,44 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: onoe-ubuntu-pv1
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /mnt/disks/ssd1 # onoe-ubuntuのローカルSSD
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - onoe-ubuntu
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: onoe-ubuntu-pv2
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /mnt/disks/ssd2 # onoe-ubuntuのローカルSSD
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - onoe-ubuntu

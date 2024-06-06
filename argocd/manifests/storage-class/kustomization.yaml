@@ -1,2 +1,3 @@
 resources:
 - local-storage.yaml
+- onoe-ubuntu-pv.yaml
