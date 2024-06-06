@@ -12,28 +12,17 @@
 | grafana    | http://grafana.k8s.internal.onoe.dev    |
 | prometheus | http://prometheus.k8s.internal.onoe.dev |
 
-# Ciliumのインストール手順
-kindでCNIを無効にしてるので最初にこれをやる  
-(ref: https://docs.cilium.io/en/stable/gettingstarted/kind/)
+# Calicoのインストール手順
+(ref: https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart)
 ```
-helm repo add cilium https://helm.cilium.io/
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
+kubectl create -f argocd/manifests/calico/custom-resources.yaml
 
-docker pull quay.io/cilium/cilium:v1.11.6
-kind load docker-image quay.io/cilium/cilium:v1.11.6
+watch kubectl get pods -n calico-system
 
-helm install cilium cilium/cilium --version 1.11.6 \
-   --namespace kube-system \
-   --set kubeProxyReplacement=partial \
-   --set hostServices.enabled=false \
-   --set externalIPs.enabled=true \
-   --set nodePort.enabled=true \
-   --set hostPort.enabled=true \
-   --set bpf.masquerade=false \
-   --set image.pullPolicy=IfNotPresent \
-   --set ipam.mode=kubernetes
+kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 
-# 状態確認
-cilium status
+calicoctl get node
 ```
 
 # ArgoCDのインストール手順
