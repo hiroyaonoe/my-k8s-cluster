@@ -62,6 +62,12 @@ kubectl port-forward svc/argocd-server --address 0.0.0.0 -n argocd 8080:443
 ```
 kubectl label nodes onoe-ubuntu ingress-ready=true
 ```
+# Grafana
+```
+# Username: admin Password:
+kubectl get secret -n monitoring prometheus-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+prom-operator
+```
 
 # References
 - https://argo-cd.readthedocs.io/en/stable/getting_started/
