@@ -1,5 +1,6 @@
-<ubuntu-ip> onoe-ubuntu.internal
-<ubuntu-ip> argocd.onoe-ubuntu.internal
-<ubuntu-ip> grpc.argocd.onoe-ubuntu.internal
-<ubuntu-ip> grafana.onoe-ubuntu.internal
-<ubuntu-ip> prometheus.onoe-ubuntu.internal
+<ubuntu-ip> k8s.internal.onoe.dev
+<ubuntu-ip> argocd.k8s.internal.onoe.dev
+<ubuntu-ip> grpc.argocd.k8s.internal.onoe.dev
+<ubuntu-ip> grafana.k8s.internal.onoe.dev
+<ubuntu-ip> prometheus.k8s.internal.onoe.dev
+<ubuntu-ip> control-plane.k8s.internal.onoe.dev
