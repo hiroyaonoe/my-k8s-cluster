@@ -69,6 +69,12 @@ kubectl get secret -n monitoring prometheus-grafana -o jsonpath="{.data.admin-pa
 prom-operator
 ```
 
+# PVC
+```
+NUM=1
+sudo mkdir -p /mnt/disks/ssd${NUM}; sudo chmod 777 /mnt/disks/ssd${NUM}
+```
+
 # References
 - https://argo-cd.readthedocs.io/en/stable/getting_started/
 - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/
