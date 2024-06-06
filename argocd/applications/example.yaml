@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: example
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/hiroyaonoe/my-k8s-cluster.git
+    targetRevision: main
+    path: argocd/manifests/default
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: example
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
