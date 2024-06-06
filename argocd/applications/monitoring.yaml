@@ -39,6 +39,9 @@ spec:
             storageSpec:
               volumeClaimTemplate:
                 spec:
+                  storageClassName: local-storage
+                  accessModes:
+                    - ReadWriteOnce
                   resources:
                     requests:
                       storage: 5Gi     # Size of volume used by prometheus'. Can be modified depending on  required retention
@@ -49,7 +52,7 @@ spec:
             storageClassName: local-storage
             accessModes:
               - ReadWriteOnce
-            size: 10Gi
+            size: 5Gi
             # annotations: {}
             finalizers:
               - kubernetes.io/pvc-protection
