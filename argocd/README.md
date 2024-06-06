@@ -8,9 +8,9 @@
 
 | service    | endpoint                               |
 |:----------:|:--------------------------------------:|
-| argocd     | https://argocd.onoe-ubuntu.internal    |
-| grafana    | http://grafana.onoe-ubuntu.internal    |
-| prometheus | http://prometheus.onoe-ubuntu.internal |
+| argocd     | https://argocd.k8s.internal.onoe.dev    |
+| grafana    | http://grafana.k8s.internal.onoe.dev    |
+| prometheus | http://prometheus.k8s.internal.onoe.dev |
 
 # Ciliumのインストール手順
 kindでCNIを無効にしてるので最初にこれをやる  
