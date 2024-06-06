@@ -15,6 +15,10 @@ spec:
       encapsulation: VXLANCrossSubnet
       natOutgoing: Enabled
       nodeSelector: all()
+    nodeAddressAutodetectionV4:
+      # KubernetesのNode Internal IPと同じIPを使う(Tailscaleではなく自宅)
+      # https://docs.tigera.io/calico/latest/networking/ipam/ip-autodetection
+      kubernetes: NodeInternalIP
 
 ---
 
