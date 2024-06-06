@@ -60,3 +60,18 @@ spec:
             ssh_authorized_keys:
             - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL5uyJo3AOj+u6YPtwG1lK1r0n/rXOUA12CLWxNmTfmE
         name: cloudinitdisk
+---
+# virtctl expose vmi fedora --name=fedora-ssh --port=22 --target-port=22 --type=NodePort
+apiVersion: v1
+kind: Service
+metadata:
+  name: fedora-ssh
+spec:
+  type: NodePort
+  selector:
+    kubevirt.io/domain: fedora
+  ports:
+  - nodePort: 30222
+    port: 22
+    protocol: TCP
+    targetPort: 22
