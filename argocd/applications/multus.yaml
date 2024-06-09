@@ -1,0 +1,12 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: multux
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/hiroyaonoe/my-k8s-cluster.git
+    targetRevision: main
+    path: argocd/manifests/multus
+  destination:
+    server: "https://kubernetes.default.svc"
