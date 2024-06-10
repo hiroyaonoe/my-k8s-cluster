@@ -80,14 +80,14 @@ spec:
             disable_root: false
             ssh_authorized_keys:
             - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL5uyJo3AOj+u6YPtwG1lK1r0n/rXOUA12CLWxNmTfmE
-          networkData: |
-          network:
-            version: 1
-            config:
-            - type: physical
-            name: eth0
-            subnets:
-              - type: dhcp
+          # networkData: |
+          #   network:
+          #     version: 1
+          #     config:
+          #     - type: physical
+          #     name: eth0
+          #     subnets:
+          #       - type: dhcp
         name: cloudinitdisk
 ---
 apiVersion: v1
