@@ -87,3 +87,7 @@ https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#mana
 
 ## Cilium
 - https://docs.cilium.io/en/stable/gettingstarted/kind/
+
+# Kubevirt Multus
+- https://kubevirt.io/user-guide/network/interfaces_and_networks/
+- https://kubevirt.io/user-guide/user_workloads/startup_scripts/
