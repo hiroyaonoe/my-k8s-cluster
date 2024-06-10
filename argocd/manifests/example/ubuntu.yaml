@@ -63,11 +63,23 @@ spec:
               bus: sata
               readonly: true
             name: cloudinitdisk
+          interfaces:
+          - name: default
+            bootOrder: 1
+          - name: underlay
+            bridge: {}
+            bootOrder: 2
         machine:
           type: q35
         resources:
           requests:
             memory: 4096M
+      networks:
+      - name: default
+        pod: {}
+      - name: underlay
+        multus:
+          networkName: kube-public/underlay-bridge
       volumes:
       - name: disk0
         persistentVolumeClaim:
@@ -87,14 +99,19 @@ spec:
               uid: 1000
             ssh_pwauth: true
             disable_root: false
-          # networkData: |
-          #   network:
-          #     version: 1
-          #     config:
-          #     - type: physical
-          #     name: eth0
-          #     subnets:
-          #       - type: dhcp
+          networkData: |
+            version: 2
+            ethernets:
+              eth0:
+                dhcp4: true
+                addresses: [ fd10:0:2::2/120 ]
+                gateway6: fd10:0:2::1
+            version: 2
+            ethernets:
+              ens3:
+                dhcp4: false
+                addresses: [192.168.0.161/24]
+                gateway4: 192.168.0.1
         name: cloudinitdisk
 ---
 apiVersion: v1

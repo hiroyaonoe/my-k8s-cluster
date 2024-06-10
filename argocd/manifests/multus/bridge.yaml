@@ -5,6 +5,7 @@ metadata:
   namespace: kube-public
 spec:
   # https://www.cni.dev/plugins/current/main/bridge/#example-configuration
+  # https://www.cni.dev/plugins/v1.1/ipam/host-local/
   config: |
     {
       "cniVersion": "0.3.1",
