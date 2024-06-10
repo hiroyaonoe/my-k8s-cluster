@@ -44,7 +44,6 @@ metadata:
 spec:
   accessModes:
   - ReadWriteOnce
-  storageClassName: cloning
   resources:
     requests:
       storage: 10Gi
