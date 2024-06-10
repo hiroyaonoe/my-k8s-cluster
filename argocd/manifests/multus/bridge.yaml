@@ -4,12 +4,15 @@ metadata:
   name: underlay-bridge
   namespace: kube-public
 spec:
-  # https://www.cni.dev/plugins/current/main/bridge/#example-l2-only-configuration
+  # https://www.cni.dev/plugins/current/main/bridge/#example-configuration
   config: |
     {
       "cniVersion": "0.3.1",
       "name": "underlay-bridge",
       "type": "bridge",
       "bridge": "br0",
-      "ipam": {}
+      "ipam": {
+          "type": "host-local",
+          "subnet": "192.168.0.0/24"
+      }
     }
