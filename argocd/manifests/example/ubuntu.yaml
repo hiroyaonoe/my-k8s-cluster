@@ -52,7 +52,7 @@ spec:
         storage: 5Gi
     storageClassName: local-storage
   source:
-    storage:
+    pvc:
       name: ubuntu
       namespace: example
 ---
