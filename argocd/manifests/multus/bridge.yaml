@@ -3,6 +3,8 @@ kind: NetworkAttachmentDefinition
 metadata:
   name: underlay-bridge
   namespace: kube-public
+  annotations:
+    k8s.v1.cni.cncf.io/resourceName: bridge.network.kubevirt.io/br0
 spec:
   # https://www.cni.dev/plugins/current/main/bridge/#example-configuration
   # https://www.cni.dev/plugins/v1.1/ipam/host-local/
