@@ -73,13 +73,20 @@ spec:
         persistentVolumeClaim:
           claimName: ubuntu
       - cloudInitNoCloud:
+          # openssl passwd -6 -salt=salt password
           userData: |
             #cloud-config
             hostname: ubuntu
-            ssh_pwauth: True
+            users:
+            - name: onoe
+              ssh_import_id: gh:hiroyaonoe
+              lock_passwd: false
+              passwd: $6$salt$IxDD3jeSOb5eB1CX5LBsqZFVkJdido3OUILO5Ifz5iwMuTS4XMS130MTSuDDl3aCI6WouIL9AjRbLCelDCy.g.
+              shell: /bin/bash
+              sudo: ALL=(ALL) NOPASSWD:ALL
+              uid: 1000
+            ssh_pwauth: true
             disable_root: false
-            ssh_authorized_keys:
-            - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL5uyJo3AOj+u6YPtwG1lK1r0n/rXOUA12CLWxNmTfmE
           # networkData: |
           #   network:
           #     version: 1
