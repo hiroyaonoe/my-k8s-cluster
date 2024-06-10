@@ -1,7 +1,13 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: network
+---
 apiVersion: "k8s.cni.cncf.io/v1"
 kind: NetworkAttachmentDefinition
 metadata:
   name: underlay-bridge
+  namespace: network
 spec:
   # https://www.cni.dev/plugins/current/main/bridge/#example-l2-only-configuration
   config: |
