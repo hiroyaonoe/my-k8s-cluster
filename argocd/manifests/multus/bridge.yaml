@@ -4,6 +4,7 @@ metadata:
   name: underlay-bridge
   namespace: kube-public
   annotations:
+    # https://access.redhat.com/documentation/ja-jp/openshift_container_platform/4.1/html/container-native_virtualization/attaching-to-multiple-networks#connecting-resource-bridge-network_cnv-attaching-multiple-networks
     k8s.v1.cni.cncf.io/resourceName: bridge.network.kubevirt.io/br0
 spec:
   # https://www.cni.dev/plugins/current/main/bridge/#example-configuration
