@@ -37,19 +37,24 @@ spec:
     http:
       url: "https://releases.ubuntu.com/22.04/ubuntu-22.04.4-live-server-amd64.iso"
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
 metadata:
   name: ubuntu-vm
+  annotations:
+    cdi.kubevirt.io/storage.bind.immediate.requested: "true"
 spec:
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi
-  dataSource:
-    kind: PersistentVolumeClaim
-    name: ubuntu
+  storage:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 5Gi
+    storageClassName: local-storage
+  source:
+    storage:
+      name: ubuntu
+      namespace: example
 ---
 apiVersion: kubevirt.io/v1
 kind: VirtualMachine
