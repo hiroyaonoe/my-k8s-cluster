@@ -85,6 +85,7 @@ spec:
             name: cloudinitdisk
           interfaces:
           - name: default
+            masquerade: {}
             bootOrder: 1
           - name: underlay
             bridge: {}
