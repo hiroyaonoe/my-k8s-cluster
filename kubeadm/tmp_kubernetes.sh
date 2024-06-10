@@ -61,7 +61,7 @@ sudo nerdctl ps
 # https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd
 sudo mkdir -p /etc/containerd
 # https://github.com/kubernetes/kubeadm/issues/2833#issuecomment-1456845860
-containerd config default | sudo tee/etc/containerd/config.toml
+containerd config default | sudo tee /etc/containerd/config.toml
 cat <<EOF | sudo tee /etc/containerd/config.toml
 version = 2
 [plugins]
@@ -91,6 +91,10 @@ apiVersion: kubelet.config.k8s.io/v1beta1
 cgroupDriver: systemd
 EOF
 
+sudo mkdir -p /etc/default
+cat <<EOF | sudo tee /etc/default/kubelet
+KUBELET_EXTRA_ARGS=--node-ip=<host-IP>
+EOF
 
 # https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-kubeadm-kubelet-and-kubectl
 sudo apt-get update
