@@ -181,7 +181,7 @@ metadata:
   name: onoe-ubuntu-pv9
 spec:
   capacity:
-    storage: 5Gi
+    storage: 10Gi
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
