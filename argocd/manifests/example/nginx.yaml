@@ -14,7 +14,15 @@ spec:
       labels:
         app: nginx
       annotations:
-        k8s.v1.cni.cncf.io/networks: kube-public/underlay-bridge
+        k8s.v1.cni.cncf.io/networks: |
+          [
+            {
+              "name": "underlay-bridge",
+              "namespace": "kube-public",
+              "interface": "eth1",
+              "ips": [ "192.168.0.171" ]
+            }
+          ]
     spec:
       containers:
       - name: nginx
