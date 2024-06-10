@@ -18,3 +18,88 @@ spec:
       - name: ubuntu
         image: ubuntu:latest
         command: ["sleep", "infinity"]
+---
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  name: ubuntu
+  annotations:
+    cdi.kubevirt.io/storage.bind.immediate.requested: "true"
+spec:
+  storage:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 5Gi
+    storageClassName: local-storage
+  source:
+    http:
+      url: "https://releases.ubuntu.com/22.04/ubuntu-22.04.4-live-server-amd64.iso"
+---
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  labels:
+    kubevirt.io/os: linux
+  name: ubuntu
+spec:
+  running: true
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        kubevirt.io/domain: ubuntu
+    spec:
+      domain:
+        cpu:
+          cores: 4
+        devices:
+          disks:
+          - disk:
+              bus: virtio
+            name: disk0
+          - cdrom:
+              bus: sata
+              readonly: true
+            name: cloudinitdisk
+        machine:
+          type: q35
+        resources:
+          requests:
+            memory: 4096M
+      volumes:
+      - name: disk0
+        persistentVolumeClaim:
+          claimName: ubuntu
+      - cloudInitNoCloud:
+          userData: |
+            #cloud-config
+            hostname: ubuntu
+            ssh_pwauth: True
+            disable_root: false
+            ssh_authorized_keys:
+            - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL5uyJo3AOj+u6YPtwG1lK1r0n/rXOUA12CLWxNmTfmE
+          networkData: |
+          network:
+            version: 1
+            config:
+            - type: physical
+            name: eth0
+            subnets:
+              - type: dhcp
+        name: cloudinitdisk
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ubuntu-ssh
+spec:
+  type: NodePort
+  selector:
+    kubevirt.io/domain: ubuntu
+  ports:
+  - nodePort: 30322
+    port: 22
+    protocol: TCP
+    targetPort: 22
