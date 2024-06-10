@@ -37,6 +37,21 @@ spec:
     http:
       url: "https://releases.ubuntu.com/22.04/ubuntu-22.04.4-live-server-amd64.iso"
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ubuntu-vm
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: cloning
+  resources:
+    requests:
+      storage: 10Gi
+  dataSource:
+    kind: PersistentVolumeClaim
+    name: ubuntu
+---
 apiVersion: kubevirt.io/v1
 kind: VirtualMachine
 metadata:
@@ -84,7 +99,7 @@ spec:
       volumes:
       - name: disk0
         persistentVolumeClaim:
-          claimName: ubuntu
+          claimName: ubuntu-vm
       - cloudInitNoCloud:
           # openssl passwd -6 -salt=salt password
           userData: |
