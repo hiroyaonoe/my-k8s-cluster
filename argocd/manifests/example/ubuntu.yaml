@@ -51,6 +51,7 @@ spec:
       labels:
         kubevirt.io/domain: ubuntu
     spec:
+      # hostname: ubuntu
       domain:
         cpu:
           cores: 4
@@ -79,7 +80,7 @@ spec:
         pod: {}
       - name: underlay
         multus:
-          networkName: kube-public/underlay-bridge@eth1
+          networkName: kube-public/underlay-bridge
       volumes:
       - name: disk0
         persistentVolumeClaim:
