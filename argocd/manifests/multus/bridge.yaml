@@ -1,0 +1,14 @@
+apiVersion: "k8s.cni.cncf.io/v1"
+kind: NetworkAttachmentDefinition
+metadata:
+  name: underlay-bridge
+spec:
+  # https://www.cni.dev/plugins/current/main/bridge/#example-l2-only-configuration
+  config: |
+    {
+      "cniVersion": "0.3.1",
+      "name": "underlay-bridge",
+      "type": "bridge",
+      "bridge": "br0",
+      "ipam": {}
+    }
