@@ -25,22 +25,22 @@ metadata:
 spec:
   running: true
   dataVolumeTemplates:
-    metadata:
-      name: vm1
-      annotations:
-        cdi.kubevirt.io/storage.bind.immediate.requested: "true"
-    spec:
-      storage:
-        accessModes:
-          - ReadWriteOnce
-        resources:
-          requests:
-            storage: 8Gi
-        storageClassName: local-storage
-      source:
-        pvc:
-          name: ubuntu-image
-          namespace: example
+    - metadata:
+        name: vm1
+        annotations:
+          cdi.kubevirt.io/storage.bind.immediate.requested: "true"
+      spec:
+        storage:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 8Gi
+          storageClassName: local-storage
+        source:
+          pvc:
+            name: ubuntu-image
+            namespace: example
   template:
     metadata:
       labels:
