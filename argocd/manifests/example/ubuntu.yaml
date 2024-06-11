@@ -66,11 +66,10 @@ spec:
   running: true
   template:
     metadata:
-      creationTimestamp: null
       labels:
         kubevirt.io/domain: ubuntu
     spec:
-      # hostname: ubuntu
+      hostname: ubuntu
       domain:
         cpu:
           cores: 4
@@ -79,17 +78,19 @@ spec:
           - disk:
               bus: virtio
             name: disk0
+            bootOrder: 1
           - cdrom:
               bus: sata
               readonly: true
             name: cloudinitdisk
+            bootOrder: 2
           interfaces:
           - name: default
             masquerade: {}
-            bootOrder: 1
-          - name: underlay
-            bridge: {}
-            bootOrder: 2
+            bootOrder: 3
+          # - name: underlay
+          #   bridge: {}
+          #   bootOrder: 4
         machine:
           type: q35
         resources:
@@ -98,9 +99,9 @@ spec:
       networks:
       - name: default
         pod: {}
-      - name: underlay
-        multus:
-          networkName: kube-public/underlay-bridge
+      # - name: underlay
+      #   multus:
+      #     networkName: kube-public/underlay-bridge
       volumes:
       - name: disk0
         persistentVolumeClaim:
@@ -123,7 +124,9 @@ spec:
           networkData: |
             version: 2
             ethernets:
-              eth1:
+              enp1s0:
+                dhcp4: true
+              net1:
                 dhcp4: false
                 addresses: [192.168.0.161/24]
                 gateway4: 192.168.0.1
