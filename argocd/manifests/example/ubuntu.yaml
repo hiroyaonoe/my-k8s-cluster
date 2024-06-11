@@ -1,28 +1,7 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: ubuntu
-  labels:
-    app: ubuntu
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: ubuntu
-  template:
-    metadata:
-      labels:
-        app: ubuntu
-    spec:
-      containers:
-      - name: ubuntu
-        image: ubuntu:latest
-        command: ["sleep", "infinity"]
----
 apiVersion: cdi.kubevirt.io/v1beta1
 kind: DataVolume
 metadata:
-  name: ubuntu
+  name: ubuntu-image
   annotations:
     cdi.kubevirt.io/storage.bind.immediate.requested: "true"
 spec:
@@ -35,41 +14,39 @@ spec:
     storageClassName: local-storage
   source:
     http:
-      url: "https://releases.ubuntu.com/22.04/ubuntu-22.04.4-live-server-amd64.iso"
----
-apiVersion: cdi.kubevirt.io/v1beta1
-kind: DataVolume
-metadata:
-  name: ubuntu-vm
-  annotations:
-    cdi.kubevirt.io/storage.bind.immediate.requested: "true"
-spec:
-  storage:
-    accessModes:
-      - ReadWriteOnce
-    resources:
-      requests:
-        storage: 5Gi
-    storageClassName: local-storage
-  source:
-    pvc:
-      name: ubuntu
-      namespace: example
+      url: https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img"
 ---
 apiVersion: kubevirt.io/v1
 kind: VirtualMachine
 metadata:
   labels:
     kubevirt.io/os: linux
-  name: ubuntu
+  name: vm1
 spec:
   running: true
+  dataVolumeTemplates:
+    metadata:
+      name: vm1
+      annotations:
+        cdi.kubevirt.io/storage.bind.immediate.requested: "true"
+    spec:
+      storage:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 8Gi
+        storageClassName: local-storage
+      source:
+        pvc:
+          name: ubuntu-image
+          namespace: example
   template:
     metadata:
       labels:
-        kubevirt.io/domain: ubuntu
+        kubevirt.io/domain: vm1
     spec:
-      hostname: ubuntu
+      hostname: vm1
       domain:
         cpu:
           cores: 4
@@ -105,12 +82,12 @@ spec:
       volumes:
       - name: disk0
         persistentVolumeClaim:
-          claimName: ubuntu-vm
+          claimName: vm1
       - cloudInitNoCloud:
           # openssl passwd -6 -salt=salt password
           userData: |
             #cloud-config
-            hostname: ubuntu
+            hostname: vm1
             users:
             - name: onoe
               ssh_import_id: gh:hiroyaonoe
@@ -135,11 +112,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ubuntu-ssh
+  name: vm1-ssh
 spec:
   type: NodePort
   selector:
-    kubevirt.io/domain: ubuntu
+    kubevirt.io/domain: vm1
   ports:
   - nodePort: 30322
     port: 22
