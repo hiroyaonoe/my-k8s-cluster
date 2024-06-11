@@ -14,7 +14,7 @@ spec:
     storageClassName: local-storage
   source:
     http:
-      url: https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img"
+      url: https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img
 ---
 apiVersion: kubevirt.io/v1
 kind: VirtualMachine

@@ -24,6 +24,9 @@ kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 
 calicoctl get node
 ```
+### 再インストールのTips
+https://komeiy.hatenablog.com/entry/2019/07/28/232356
+https://github.com/projectcalico/calico/issues/8368#issuecomment-2120873448
 
 # ArgoCDのインストール手順
 ```
@@ -91,3 +94,4 @@ https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#mana
 # Kubevirt Multus
 - https://kubevirt.io/user-guide/network/interfaces_and_networks/
 - https://kubevirt.io/user-guide/user_workloads/startup_scripts/
+- https://kubevirt.io/2018/attaching-to-multiple-networks.html
