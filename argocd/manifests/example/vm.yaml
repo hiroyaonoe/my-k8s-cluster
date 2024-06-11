@@ -10,35 +10,37 @@ spec:
         kubevirt.io/size: small
         kubevirt.io/domain: testvm
     spec:
-      hostname: cirros
+      hostname: testvm
       domain:
         devices:
           disks:
             - name: containerdisk
               disk:
                 bus: virtio
+              bootOrder: 1
             - name: cloudinitdisk
               disk:
                 bus: virtio
+              bootOrder: 2
           interfaces:
           - name: default
             masquerade: {}
         resources:
           requests:
-            memory: 64M
+            memory: 1024M
       networks:
       - name: default
         pod: {}
       volumes:
         - name: containerdisk
           containerDisk:
-            image: quay.io/kubevirt/cirros-container-disk-demo
+            image: quay.io/containerdisks/ubuntu:22.04
         - name: cloudinitdisk
           cloudInitNoCloud:
             # openssl passwd -6 -salt=salt password
             userData: |
               #cloud-config
-              hostname: ubuntu
+              hostname: testvm
               users:
               - name: onoe
                 ssh_import_id: gh:hiroyaonoe
