@@ -65,9 +65,9 @@ spec:
           - name: default
             masquerade: {}
             bootOrder: 3
-          # - name: underlay
-          #   bridge: {}
-          #   bootOrder: 4
+          - name: underlay
+            bridge: {}
+            bootOrder: 4
         machine:
           type: q35
         resources:
@@ -76,9 +76,9 @@ spec:
       networks:
       - name: default
         pod: {}
-      # - name: underlay
-      #   multus:
-      #     networkName: kube-public/underlay-bridge
+      - name: underlay
+        multus:
+          networkName: kube-public/underlay-bridge
       volumes:
       - name: disk0
         persistentVolumeClaim:
