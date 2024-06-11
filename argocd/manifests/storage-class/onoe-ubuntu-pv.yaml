@@ -115,7 +115,7 @@ metadata:
   name: onoe-ubuntu-pv6
 spec:
   capacity:
-    storage: 5Gi
+    storage: 10Gi
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
@@ -137,7 +137,7 @@ metadata:
   name: onoe-ubuntu-pv7
 spec:
   capacity:
-    storage: 5Gi
+    storage: 10Gi
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
@@ -159,7 +159,7 @@ metadata:
   name: onoe-ubuntu-pv8
 spec:
   capacity:
-    storage: 5Gi
+    storage: 10Gi
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
