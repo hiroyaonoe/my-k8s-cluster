@@ -1,0 +1,10 @@
+# https://kubevirt.io/user-guide/network/interfaces_and_networks/#bridge
+apiVersion: kubevirt.io/v1
+kind: Kubevirt
+metadata:
+  name: kubevirt
+  namespace: kubevirt
+spec:
+  configuration:
+    network:
+      permitBridgeInterfaceOnPodNetwork: false
