@@ -35,27 +35,27 @@ spec:
             image: quay.io/kubevirt/cirros-container-disk-demo
         - name: cloudinitdisk
           cloudInitNoCloud:
-          # openssl passwd -6 -salt=salt password
-          userData: |
-            #cloud-config
-            hostname: ubuntu
-            users:
-            - name: onoe
-              ssh_import_id: gh:hiroyaonoe
-              lock_passwd: false
-              passwd: $6$salt$IxDD3jeSOb5eB1CX5LBsqZFVkJdido3OUILO5Ifz5iwMuTS4XMS130MTSuDDl3aCI6WouIL9AjRbLCelDCy.g.
-              shell: /bin/bash
-              sudo: ALL=(ALL) NOPASSWD:ALL
-              uid: 1000
-            ssh_pwauth: true
-            disable_root: false
-          networkData: |
-            version: 2
-            ethernets:
-              eth0:
-                dhcp4: true
-              eth1:
-                dhcp4: false
-                addresses: [192.168.0.160/24]
-                gateway4: 192.168.0.1
+            # openssl passwd -6 -salt=salt password
+            userData: |
+              #cloud-config
+              hostname: ubuntu
+              users:
+              - name: onoe
+                ssh_import_id: gh:hiroyaonoe
+                lock_passwd: false
+                passwd: $6$salt$IxDD3jeSOb5eB1CX5LBsqZFVkJdido3OUILO5Ifz5iwMuTS4XMS130MTSuDDl3aCI6WouIL9AjRbLCelDCy.g.
+                shell: /bin/bash
+                sudo: ALL=(ALL) NOPASSWD:ALL
+                uid: 1000
+              ssh_pwauth: true
+              disable_root: false
+            networkData: |
+              version: 2
+              ethernets:
+                eth0:
+                  dhcp4: true
+                eth1:
+                  dhcp4: false
+                  addresses: [192.168.0.160/24]
+                  gateway4: 192.168.0.1
 ---
