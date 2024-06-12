@@ -1,6 +1,9 @@
-<ubuntu-ip> k8s.internal.onoe.dev
-<ubuntu-ip> argocd.k8s.internal.onoe.dev
-<ubuntu-ip> grpc.argocd.k8s.internal.onoe.dev
-<ubuntu-ip> grafana.k8s.internal.onoe.dev
-<ubuntu-ip> prometheus.k8s.internal.onoe.dev
-<ubuntu-ip> control-plane.k8s.internal.onoe.dev
+192.168.0.130 onoe-ubuntu.node.internal.onoe.dev
+192.168.0.140 mandoloncello.node.internal.onoe.dev
+
+192.168.0.130 k8s.internal.onoe.dev
+192.168.0.130 argocd.k8s.internal.onoe.dev
+192.168.0.130 grpc.argocd.k8s.internal.onoe.dev
+192.168.0.130 grafana.k8s.internal.onoe.dev
+192.168.0.130 prometheus.k8s.internal.onoe.dev
+192.168.0.130 control-plane.k8s.internal.onoe.dev
