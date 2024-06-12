@@ -31,7 +31,9 @@ spec:
       hostname: vm-pg-1
       domain:
         cpu:
-          cores: 10
+          cores: 8
+        memory:
+          guest: 8Gi
         devices:
           disks:
           - disk:
@@ -50,10 +52,12 @@ spec:
           - name: underlay
             bridge: {}
             bootOrder: 4
+        # guestからはdomain.cpu.coresとdomain.memory.guestが認識される
+        # これはschedulingのために設定している
         resources:
           requests:
-            cpu: 1
-            memory: 1Gi
+            cpu: 0.5
+            memory: 512Mi
           limits:
             cpu: 8
             memory: 8Gi
