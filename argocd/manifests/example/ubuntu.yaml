@@ -23,7 +23,7 @@ metadata:
     kubevirt.io/os: linux
   name: vm1
 spec:
-  running: false
+  running: true
   dataVolumeTemplates:
     - metadata:
         name: vm1
