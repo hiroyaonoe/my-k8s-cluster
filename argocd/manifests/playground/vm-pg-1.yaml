@@ -1,0 +1,106 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  labels:
+    kubevirt.io/os: linux
+  name: vm-pg-1
+spec:
+  running: false
+  dataVolumeTemplates:
+    - metadata:
+        name: vm-pg-1
+        annotations:
+          cdi.kubevirt.io/storage.bind.immediate.requested: "true"
+      spec:
+        storage:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 64Gi
+          storageClassName: mandoloncello-nfs
+        source:
+          pvc:
+            name: ubuntu-image-2404
+            namespace: playground
+  template:
+    metadata:
+      labels:
+        kubevirt.io/domain: vm-pg-1
+    spec:
+      hostname: vm-pg-1
+      domain:
+        cpu:
+          cores: 8
+        devices:
+          disks:
+          - disk:
+              bus: virtio
+            name: disk0
+            bootOrder: 1
+          - cdrom:
+              bus: sata
+              readonly: true
+            name: cloudinitdisk
+            bootOrder: 2
+          interfaces:
+          - name: default
+            masquerade: {}
+            bootOrder: 3
+          - name: underlay
+            bridge: {}
+            bootOrder: 4
+        machine:
+          type: q35
+        resources:
+          requests:
+            memory: 8Gi
+      networks:
+      - name: default
+        pod: {}
+      - name: underlay
+        multus:
+          networkName: kube-public/underlay-bridge
+      volumes:
+      - name: disk0
+        persistentVolumeClaim:
+          claimName: vm-pg-1
+      - cloudInitNoCloud:
+          # openssl passwd -6 -salt=salt password
+          userData: |
+            #cloud-config
+            hostname: vm-pg-1
+            users:
+            - name: onoe
+              ssh_import_id: gh:hiroyaonoe
+              lock_passwd: false
+              passwd: $6$salt$IxDD3jeSOb5eB1CX5LBsqZFVkJdido3OUILO5Ifz5iwMuTS4XMS130MTSuDDl3aCI6WouIL9AjRbLCelDCy.g.
+              shell: /bin/bash
+              sudo: ALL=(ALL) NOPASSWD:ALL
+              uid: 1000
+            ssh_pwauth: true
+            disable_root: false
+          networkData: |
+            version: 2
+            ethernets:
+              enp1s0:
+                dhcp4: true
+              enp2s0:
+                dhcp4: false
+                addresses: [192.168.0.162/24]
+                gateway4: 192.168.0.1
+        name: cloudinitdisk
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vm-pg-1-ssh
+spec:
+  type: NodePort
+  selector:
+    kubevirt.io/domain: vm-pg-1
+  ports:
+  - nodePort: 30422
+    port: 22
+    protocol: TCP
+    targetPort: 22
