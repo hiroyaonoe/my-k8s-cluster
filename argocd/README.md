@@ -34,6 +34,13 @@ kubectl get ns calico-system -o json > mygitignore/calico-system.json
 kubectl replace --raw "/api/v1/namespaces/calico-system/finalize" -f mygitignore/calico-system.json
 ```
 
+### Multus/Calicoが壊れた時
+`/etc/cni/net.d/`配下のファイルのうち、関係あるものだけ消す
+`/opt/cni/bin/multus-shim`を消す
+関係ありそうなMultus/CalicoのPodを削除して再起動する
+ContainerCreatingで止まっているPodも削除して再起動する
+Multus/Calicoのクリーンインストールはめんどいので最終手段にする
+
 # ArgoCDのインストール手順
 ```
 kubectl create namespace argocd
