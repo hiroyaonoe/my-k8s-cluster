@@ -7,6 +7,10 @@ spec:
   config:
     featureGates:
     - HonorWaitForFirstConsumer
+    podResourceRequirements:
+      limits:
+        cpu: 1
+        memory: 5Gi
   imagePullPolicy: IfNotPresent
   infra:
     nodeSelector:
