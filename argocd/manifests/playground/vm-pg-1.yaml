@@ -5,7 +5,7 @@ metadata:
     kubevirt.io/os: linux
   name: vm-pg-1
 spec:
-  running: false
+  running: true
   dataVolumeTemplates:
     - metadata:
         name: vm-pg-1
@@ -31,7 +31,7 @@ spec:
       hostname: vm-pg-1
       domain:
         cpu:
-          cores: 8
+          cores: 10
         devices:
           disks:
           - disk:
@@ -50,10 +50,12 @@ spec:
           - name: underlay
             bridge: {}
             bootOrder: 4
-        machine:
-          type: q35
         resources:
           requests:
+            cpu: 1
+            memory: 1Gi
+          limits:
+            cpu: 8
             memory: 8Gi
       networks:
       - name: default
