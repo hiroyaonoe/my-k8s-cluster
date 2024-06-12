@@ -6,3 +6,4 @@ resources:
 patchesStrategicMerge:
 - overlays/ingress-class.yaml
 - overlays/deployment.yaml
+- overlays/service-controller.yaml

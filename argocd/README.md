@@ -6,11 +6,11 @@
 # GUIコンソールエンドポイント一覧
 `etc/hosts`を書き換えておくこと
 
-| service    | endpoint                               |
-|:----------:|:--------------------------------------:|
-| argocd     | https://argocd.k8s.internal.onoe.dev    |
-| grafana    | http://grafana.k8s.internal.onoe.dev    |
-| prometheus | http://prometheus.k8s.internal.onoe.dev |
+| service    | endpoint                                       |
+|:----------:|:----------------------------------------------:|
+| argocd     | https://argocd.k8s.internal.onoe.dev:30443/    |
+| grafana    | https://grafana.k8s.internal.onoe.dev:30443/    |
+| prometheus | https://prometheus.k8s.internal.onoe.dev:30443/ |
 
 # Calicoのインストール手順
 (ref: https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart)
