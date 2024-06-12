@@ -28,6 +28,12 @@ calicoctl get node
 https://komeiy.hatenablog.com/entry/2019/07/28/232356
 https://github.com/projectcalico/calico/issues/8368#issuecomment-2120873448
 
+```
+kubectl get ns calico-system -o json > mygitignore/calico-system.json
+# Remove finalizer from mygitignore/calico-system.json
+kubectl replace --raw "/api/v1/namespaces/calico-system/finalize" -f mygitignore/calico-system.json
+```
+
 # ArgoCDのインストール手順
 ```
 kubectl create namespace argocd
