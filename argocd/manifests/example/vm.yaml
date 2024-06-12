@@ -25,12 +25,19 @@ spec:
           interfaces:
           - name: default
             masquerade: {}
+            bootOrder: 3
+          - name: underlay
+            bridge: {}
+            bootOrder: 4
         resources:
           requests:
             memory: 4096M
       networks:
       - name: default
         pod: {}
+      - name: underlay
+        multus:
+          networkName: kube-public/underlay-bridge
       volumes:
         - name: containerdisk
           containerDisk:
