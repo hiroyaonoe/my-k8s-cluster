@@ -56,10 +56,10 @@ spec:
         # これはschedulingのために設定している
         resources:
           requests:
-            cpu: 0.5
+            cpu: 500m
             memory: 512Mi
           limits:
-            cpu: 8
+            cpu: '8'
             memory: 8Gi
       networks:
       - name: default
