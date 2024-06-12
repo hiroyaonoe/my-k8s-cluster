@@ -8,3 +8,6 @@ spec:
   configuration:
     network:
       permitBridgeInterfaceOnPodNetwork: false
+    developerConfiguration:
+      featureGates:
+      - ExpandDisks
