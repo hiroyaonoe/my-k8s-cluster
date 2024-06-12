@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: csi-driver-nfs
+spec:
+  project: default
+  source:
+    chart: csi-driver-nfs
+    repoURL: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
+    targetRevision: v4.7.0
+    helm:
+      # https://github.com/kubernetes-csi/csi-driver-nfs/blob/master/charts/README.md
+      releaseName: csi-driver-nfs
+      values: |
+        externalSnapshotter:
+          enabled: true
+        controller:
+          runOnControlPlane: true
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: kube-system
