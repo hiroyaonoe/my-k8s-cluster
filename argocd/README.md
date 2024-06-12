@@ -72,10 +72,22 @@ kubectl get secret -n monitoring prometheus-grafana -o jsonpath="{.data.admin-pa
 prom-operator
 ```
 
-# PVC
+# local-storage
 ```
 NUM=1
 sudo mkdir -p /mnt/disks/ssd${NUM}; sudo chmod 777 /mnt/disks/ssd${NUM}
+```
+
+# mandoloncello-nfs
+```
+sudo apt install nfs-kernel-server
+sudo mkdir -p /export/nfs
+sudo chmod 777 /export/nfs
+cat << EOF >> /etc/exports
+/export/nfs 192.168.0.0/24(rw,no_root_squash,no_subtree_check)
+EOF
+sudo systemctl enable nfs-blkmap.service --now
+sudo exportfs -a
 ```
 
 # References
