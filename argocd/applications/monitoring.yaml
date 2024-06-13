@@ -39,7 +39,7 @@ spec:
             storageSpec:
               volumeClaimTemplate:
                 spec:
-                  storageClassName: mondoloncello-nfs
+                  storageClassName: mandoloncello-nfs
                   accessModes:
                     - ReadWriteOnce
                   resources:
@@ -49,7 +49,7 @@ spec:
           persistence:
             type: pvc
             enabled: true
-            storageClassName: mondoloncello-nfs
+            storageClassName: mandoloncello-nfs
             accessModes:
               - ReadWriteOnce
             size: 5Gi
