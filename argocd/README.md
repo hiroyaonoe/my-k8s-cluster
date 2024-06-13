@@ -76,7 +76,7 @@ kubectl port-forward svc/argocd-server --address 0.0.0.0 -n argocd 8080:443
 
 # ingress-nginx
 ```
-kubectl label nodes onoe-ubuntu ingress-ready=true
+kubectl label nodes mandolone ingress-ready=true
 ```
 # Grafana
 ```

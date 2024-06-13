@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: onoe-ubuntu-pv1
+  name: mandolone-pv1
 spec:
   capacity:
     storage: 5Gi
@@ -11,7 +11,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /mnt/disks/ssd1 # onoe-ubuntuのローカルSSD
+    path: /mnt/disks/ssd1 # mandoloneのローカルSSD
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -19,12 +19,12 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - onoe-ubuntu
+          - mandolone
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: onoe-ubuntu-pv2
+  name: mandolone-pv2
 spec:
   capacity:
     storage: 5Gi
@@ -33,7 +33,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /mnt/disks/ssd2 # onoe-ubuntuのローカルSSD
+    path: /mnt/disks/ssd2 # mandoloneのローカルSSD
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -41,12 +41,12 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - onoe-ubuntu
+          - mandolone
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: onoe-ubuntu-pv3
+  name: mandolone-pv3
 spec:
   capacity:
     storage: 5Gi
@@ -55,7 +55,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /mnt/disks/ssd3 # onoe-ubuntuのローカルSSD
+    path: /mnt/disks/ssd3 # mandoloneのローカルSSD
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -63,12 +63,12 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - onoe-ubuntu
+          - mandolone
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: onoe-ubuntu-pv4
+  name: mandolone-pv4
 spec:
   capacity:
     storage: 5Gi
@@ -77,7 +77,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /mnt/disks/ssd4 # onoe-ubuntuのローカルSSD
+    path: /mnt/disks/ssd4 # mandoloneのローカルSSD
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -85,12 +85,12 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - onoe-ubuntu
+          - mandolone
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: onoe-ubuntu-pv5
+  name: mandolone-pv5
 spec:
   capacity:
     storage: 5Gi
@@ -99,7 +99,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /mnt/disks/ssd5 # onoe-ubuntuのローカルSSD
+    path: /mnt/disks/ssd5 # mandoloneのローカルSSD
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -107,12 +107,12 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - onoe-ubuntu
+          - mandolone
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: onoe-ubuntu-pv6
+  name: mandolone-pv6
 spec:
   capacity:
     storage: 10Gi
@@ -121,7 +121,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /mnt/disks/ssd6 # onoe-ubuntuのローカルSSD
+    path: /mnt/disks/ssd6 # mandoloneのローカルSSD
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -129,12 +129,12 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - onoe-ubuntu
+          - mandolone
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: onoe-ubuntu-pv7
+  name: mandolone-pv7
 spec:
   capacity:
     storage: 10Gi
@@ -143,7 +143,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /mnt/disks/ssd7 # onoe-ubuntuのローカルSSD
+    path: /mnt/disks/ssd7 # mandoloneのローカルSSD
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -151,12 +151,12 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - onoe-ubuntu
+          - mandolone
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: onoe-ubuntu-pv8
+  name: mandolone-pv8
 spec:
   capacity:
     storage: 10Gi
@@ -165,7 +165,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /mnt/disks/ssd8 # onoe-ubuntuのローカルSSD
+    path: /mnt/disks/ssd8 # mandoloneのローカルSSD
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -173,12 +173,12 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - onoe-ubuntu
+          - mandolone
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: onoe-ubuntu-pv9
+  name: mandolone-pv9
 spec:
   capacity:
     storage: 10Gi
@@ -187,7 +187,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /mnt/disks/ssd9 # onoe-ubuntuのローカルSSD
+    path: /mnt/disks/ssd9 # mandoloneのローカルSSD
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -195,12 +195,12 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - onoe-ubuntu
+          - mandolone
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: onoe-ubuntu-pv10
+  name: mandolone-pv10
 spec:
   capacity:
     storage: 10Gi
@@ -209,7 +209,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /mnt/disks/ssd10 # onoe-ubuntuのローカルSSD
+    path: /mnt/disks/ssd10 # mandoloneのローカルSSD
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -217,4 +217,4 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - onoe-ubuntu
+          - mandolone

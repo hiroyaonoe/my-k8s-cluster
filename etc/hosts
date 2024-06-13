@@ -1,4 +1,4 @@
-192.168.0.130 onoe-ubuntu.node.internal.onoe.dev
+192.168.0.130 mandolone.node.internal.onoe.dev
 192.168.0.140 mandoloncello.node.internal.onoe.dev
 
 192.168.0.130 k8s.internal.onoe.dev

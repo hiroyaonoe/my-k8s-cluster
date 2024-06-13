@@ -1,4 +1,4 @@
 resources:
 - local-storage.yaml
-- onoe-ubuntu-pv.yaml
+- mandolone-pv.yaml
 - mandoloncello-nfs.yaml
