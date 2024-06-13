@@ -1,9 +1,10 @@
-# 新しいサービスのデプロイ方法
+# my-k8s-cluster
+## 新しいサービスのデプロイ方法
 - `manifests`にディレクトリを作ってmainfestを配置(manifestsを外部レポジトリから取ってくるなら不要)
 - `applications`にファイルを作ってApplicationを作成
 - argocdからsync
 
-# GUIコンソールエンドポイント一覧
+## GUIコンソールエンドポイント一覧
 `etc/hosts`を書き換えておくこと
 
 | service    | endpoint                                       |
@@ -12,7 +13,9 @@
 | grafana    | https://grafana.k8s.internal.onoe.dev:30443/    |
 | prometheus | https://prometheus.k8s.internal.onoe.dev:30443/ |
 
-# Calicoのインストール手順
+## クラスタの作成方法
+`kubeadm/tmp_kubernetes.sh`を参考にコマンドを実行してクラスタを作成する
+### Calicoをインストール
 (ref: https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart)
 ```
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
@@ -24,7 +27,51 @@ kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 
 calicoctl get node
 ```
-### 再インストールのTips
+
+
+### ArgoCDをインストール
+Manage ArgoCD using ArgoCD
+ingress-nginxやmonitoring関連はapplyできないが問題ない
+app-of-app.yamlだけ適用に失敗するのでもう一度applyする
+```
+kubectl create namespace argocd
+kubectl apply -n argocd -k argocd/manifests/argocd
+```
+
+argocdのcliツールをインストール
+#### adminのパスワード取得
+```
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+kubectl port-forward svc/argocd-server --address 0.0.0.0 -n argocd 8080:443
+argocd login localhost:8080
+## username: admin, password: 上で取得したやつ
+argocd account update-password
+```
+
+app-of-appsによってapplicationsに置かれたApplicationはAuto Syncされる
+
+(prometheus-crdsを最初にsyncしないと上手くいかないので注意)
+
+#### Syncされない場合
+```
+ssh ubuntu -L 8080:localhost:8080
+kubectl port-forward svc/argocd-server --address 0.0.0.0 -n argocd 8080:443
+```
+で`http://localhost:8080/`にアクセスして、prometheus-crdsから順に手動でSyncする
+
+### ingress-nginxの設定
+```
+kubectl label nodes mandoloncello ingress-ready=true
+```
+### Grafanaの設定
+```
+# Username: admin Password:
+kubectl get secret -n monitoring prometheus-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+prom-operator
+```
+
+## Tips
+### Calico再インストールのTips
 https://komeiy.hatenablog.com/entry/2019/07/28/232356
 https://github.com/projectcalico/calico/issues/8368#issuecomment-2120873448
 
@@ -41,54 +88,13 @@ kubectl replace --raw "/api/v1/namespaces/calico-system/finalize" -f mygitignore
 ContainerCreatingで止まっているPodも削除して再起動する
 Multus/Calicoのクリーンインストールはめんどいので最終手段にする
 
-# ArgoCDのインストール手順
-Manage ArgoCD using ArgoCD
-ingress-nginxやmonitoring関連はapplyできないが問題ない
-app-of-app.yamlだけ適用に失敗するのでもう一度applyする
-```
-kubectl create namespace argocd
-kubectl apply -n argocd -k argocd/manifests/argocd
-```
-
-## argocdのcliツールをインストール
-## adminのパスワード取得
-```
-kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
-kubectl port-forward svc/argocd-server --address 0.0.0.0 -n argocd 8080:443
-argocd login localhost:8080
-## username: admin, password: 上で取得したやつ
-argocd account update-password
-```
-
-app-of-appsによってapplicationsに置かれたApplicationはAuto Syncされる
-
-(prometheus-crdsを最初にsyncしないと上手くいかないので注意)
-
-## Syncされない場合
-```
-ssh ubuntu -L 8080:localhost:8080
-kubectl port-forward svc/argocd-server --address 0.0.0.0 -n argocd 8080:443
-```
-で`http://localhost:8080/`にアクセスして、prometheus-crdsから順に手動でSyncする
-
-# ingress-nginx
-```
-kubectl label nodes mandoloncello ingress-ready=true
-```
-# Grafana
-```
-# Username: admin Password:
-kubectl get secret -n monitoring prometheus-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
-prom-operator
-```
-
-# local-storage
+### local-storage
 ```
 NUM=1
 sudo mkdir -p /mnt/disks/ssd${NUM}; sudo chmod 777 /mnt/disks/ssd${NUM}
 ```
 
-# mandoloncello-nfs
+### mandoloncello-nfs
 ```
 sudo apt install nfs-kernel-server
 sudo mkdir -p /export/nfs

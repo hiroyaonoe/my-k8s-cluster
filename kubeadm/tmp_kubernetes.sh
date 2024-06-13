@@ -103,7 +103,9 @@ sudo systemctl enable --now kubelet
 
 # Only control-plane
 
-
 # https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/
 # https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/
 sudo kubeadm init --config kubeadm/kubeadm-config.yaml
+
+# Add worker node
+sudo kubeadm token create --print-join-command
