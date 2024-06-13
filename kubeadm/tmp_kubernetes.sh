@@ -78,18 +78,7 @@ sudo systemctl restart containerd
 
 # https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/#configuring-the-kubelet-cgroup-driver
 # https://kubernetes.io/docs/reference/config-api/kubeadm-config.v1beta3/
-cat <<EOF | tee kubeadm-config.yaml
-kind: ClusterConfiguration
-apiVersion: kubeadm.k8s.io/v1beta3
-kubernetesVersion: v1.29.3
-networking:
-  serviceSubnet: "10.96.0.0/16"
-  podSubnet: "192.168.0.0/16"
----
-kind: KubeletConfiguration
-apiVersion: kubelet.config.k8s.io/v1beta1
-cgroupDriver: systemd
-EOF
+cat kubeadm/kubeadm-config.yaml
 
 sudo mkdir -p /etc/default
 cat <<EOF | sudo tee /etc/default/kubelet
@@ -117,4 +106,4 @@ sudo systemctl enable --now kubelet
 
 # https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/
 # https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/
-sudo kubeadm init --config kubeadm-config.yaml
+sudo kubeadm init --config kubeadm/kubeadm-config.yaml
