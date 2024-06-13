@@ -42,12 +42,17 @@ ContainerCreatingで止まっているPodも削除して再起動する
 Multus/Calicoのクリーンインストールはめんどいので最終手段にする
 
 # ArgoCDのインストール手順
+Manage ArgoCD using ArgoCD
+ingress-nginxやmonitoring関連はapplyできないが問題ない
+app-of-app.yamlだけ適用に失敗するのでもう一度applyする
 ```
 kubectl create namespace argocd
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl apply -n argocd -k argocd/manifests/argocd
+```
 
-# argocdのcliツールをインストール
+## argocdのcliツールをインストール
 ## adminのパスワード取得
+```
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
 kubectl port-forward svc/argocd-server --address 0.0.0.0 -n argocd 8080:443
 argocd login localhost:8080
@@ -55,19 +60,11 @@ argocd login localhost:8080
 argocd account update-password
 ```
 
-その後 Manage ArgoCD using ArgoCD へ
-
-## Manage ArgoCD using ArgoCD
-```
-kubectl kustomize argocd/manifests/argocd | kubectl apply -n argocd -f -
-```
-以降はArgoCDでSync
-
 app-of-appsによってapplicationsに置かれたApplicationはAuto Syncされる
 
 (prometheus-crdsを最初にsyncしないと上手くいかないので注意)
 
-### Syncされない場合
+## Syncされない場合
 ```
 ssh ubuntu -L 8080:localhost:8080
 kubectl port-forward svc/argocd-server --address 0.0.0.0 -n argocd 8080:443
@@ -76,7 +73,7 @@ kubectl port-forward svc/argocd-server --address 0.0.0.0 -n argocd 8080:443
 
 # ingress-nginx
 ```
-kubectl label nodes mandolone ingress-ready=true
+kubectl label nodes mandoloncello ingress-ready=true
 ```
 # Grafana
 ```
@@ -116,7 +113,7 @@ https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#mana
 ## Cilium
 - https://docs.cilium.io/en/stable/gettingstarted/kind/
 
-# Kubevirt Multus
+## Kubevirt Multus
 - https://kubevirt.io/user-guide/network/interfaces_and_networks/
 - https://kubevirt.io/user-guide/user_workloads/startup_scripts/
 - https://kubevirt.io/2018/attaching-to-multiple-networks.html
