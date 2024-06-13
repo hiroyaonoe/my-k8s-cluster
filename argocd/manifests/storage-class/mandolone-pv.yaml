@@ -5,7 +5,7 @@ metadata:
   name: mandolone-pv1
 spec:
   capacity:
-    storage: 5Gi
+    storage: 10Gi
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
@@ -27,7 +27,7 @@ metadata:
   name: mandolone-pv2
 spec:
   capacity:
-    storage: 5Gi
+    storage: 10Gi
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
@@ -49,7 +49,7 @@ metadata:
   name: mandolone-pv3
 spec:
   capacity:
-    storage: 5Gi
+    storage: 10Gi
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
@@ -71,7 +71,7 @@ metadata:
   name: mandolone-pv4
 spec:
   capacity:
-    storage: 5Gi
+    storage: 10Gi
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
@@ -93,7 +93,7 @@ metadata:
   name: mandolone-pv5
 spec:
   capacity:
-    storage: 5Gi
+    storage: 10Gi
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
