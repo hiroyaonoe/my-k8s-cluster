@@ -31,7 +31,7 @@ spec:
         cpu:
           cores: 4
         memory:
-          size: 4Gi
+          guest: 4Gi
         devices:
           disks:
           - disk:

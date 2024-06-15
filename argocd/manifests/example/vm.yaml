@@ -16,7 +16,7 @@ spec:
           cpu:
             cores: 1
           memory:
-            size: 1Gi
+            guest: 1Gi
           disks:
             - name: containerdisk
               disk:
