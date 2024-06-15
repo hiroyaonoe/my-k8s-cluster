@@ -9,8 +9,6 @@ spec:
   dataVolumeTemplates:
     - metadata:
         name: vm-pg-1
-        annotations:
-          cdi.kubevirt.io/storage.bind.immediate.requested: "true"
       spec:
         storage:
           accessModes:

@@ -2,8 +2,6 @@ apiVersion: cdi.kubevirt.io/v1beta1
 kind: DataVolume
 metadata:
   name: ubuntu-image-2404
-  annotations:
-    cdi.kubevirt.io/storage.bind.immediate.requested: "true"
 spec:
   storage:
     accessModes:

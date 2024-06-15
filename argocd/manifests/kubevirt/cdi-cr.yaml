@@ -5,8 +5,6 @@ metadata:
   name: cdi
 spec:
   config:
-    featureGates:
-    - HonorWaitForFirstConsumer
     podResourceRequirements:
       limits:
         cpu: 1
