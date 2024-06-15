@@ -16,6 +16,13 @@ spec:
           cores: 1
         memory:
           guest: 1Gi
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: '1'
+            memory: 1Gi
         devices:
           disks:
             - name: containerdisk
