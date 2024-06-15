@@ -1,3 +1,20 @@
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  annotations:
+  name: ubuntu-image
+spec:
+  source:
+    http:
+      url: https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img
+  storage:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 5Gi
+    storageClassName: mandoloncello-nfs
+---
 apiVersion: kubevirt.io/v1
 kind: VirtualMachine
 metadata:
@@ -19,8 +36,8 @@ spec:
           storageClassName: mandoloncello-nfs
         source:
           pvc:
-            name: ubuntu-image-2404
-            namespace: playground
+            name: ubuntu-image
+            namespace: example
   template:
     metadata:
       labels:
