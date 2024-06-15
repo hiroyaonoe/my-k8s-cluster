@@ -7,7 +7,7 @@ spec:
   config:
     podResourceRequirements:
       limits:
-        cpu: 1
+        cpu: '1'
         memory: 5Gi
   imagePullPolicy: IfNotPresent
   infra:
