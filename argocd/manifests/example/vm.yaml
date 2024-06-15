@@ -13,6 +13,10 @@ spec:
       hostname: testvm
       domain:
         devices:
+          cpu:
+            cores: 1
+          memory:
+            size: 1Gi
           disks:
             - name: containerdisk
               disk:
@@ -29,9 +33,6 @@ spec:
           - name: underlay
             bridge: {}
             bootOrder: 4
-        resources:
-          requests:
-            memory: 4096M
       networks:
       - name: default
         pod: {}

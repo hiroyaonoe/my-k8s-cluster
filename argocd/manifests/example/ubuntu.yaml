@@ -46,6 +46,8 @@ spec:
       domain:
         cpu:
           cores: 4
+        memory:
+          size: 4Gi
         devices:
           disks:
           - disk:
@@ -66,9 +68,6 @@ spec:
             bootOrder: 4
         machine:
           type: q35
-        resources:
-          requests:
-            memory: 4096M
       networks:
       - name: default
         pod: {}
