@@ -12,11 +12,11 @@ spec:
     spec:
       hostname: testvm
       domain:
+        cpu:
+          cores: 1
+        memory:
+          guest: 1Gi
         devices:
-          cpu:
-            cores: 1
-          memory:
-            guest: 1Gi
           disks:
             - name: containerdisk
               disk:
