@@ -4,21 +4,21 @@ metadata:
   name: coredns-config
 data:
   Corefile: |
-    internal.onoe.dev:53 {
-      log
+    . {
       hosts {
-        192.168.0.190 test
-        192.168.0.130 mandolone.node
-        192.168.0.140 mandoloncello.node
+        192.168.0.190 test.internal.onoe.dev
+        192.168.0.130 mandolone.node.internal.onoe.dev
+        192.168.0.140 mandoloncello.node.internal.onoe.dev
 
-        192.168.0.140 k8s
-        192.168.0.140 argocd.k8s
-        192.168.0.140 grpc.argocd.k8s
-        192.168.0.140 grafana.k8s
-        192.168.0.140 prometheus.k8s
-        192.168.0.140 control-plane.k8s
+        192.168.0.140 k8s.internal.onoe.dev
+        192.168.0.140 argocd.k8s.internal.onoe.dev
+        192.168.0.140 grpc.argocd.k8s.internal.onoe.dev
+        192.168.0.140 grafana.k8s.internal.onoe.dev
+        192.168.0.140 prometheus.k8s.internal.onoe.dev
+        192.168.0.140 control-plane.k8s.internal.onoe.dev
         fallthrough
       }
+      log
       loop
       reload
       loadbalance
