@@ -5,8 +5,7 @@ metadata:
 data:
   Corefile: |
     internal.onoe.dev:53 {
-      errors
-      health
+      log
       hosts {
         192.168.0.190 test
         192.168.0.130 mandolone.node
@@ -20,7 +19,6 @@ data:
         192.168.0.140 control-plane.k8s
         fallthrough
       }
-      ready
       loop
       reload
       loadbalance
