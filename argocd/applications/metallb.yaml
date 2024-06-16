@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: metallb
 spec:
-  project: metallb
+  project: default
   source:
     chart: metallb
     repoURL: https://metallb.github.io/metallb
