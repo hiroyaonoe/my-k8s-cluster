@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       labels:
-        app: corends
+        app: coredns
     spec:
       containers:
       - name: coredns
