@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coredns
+  labels:
+    app: coredns
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: coredns
+  template:
+    metadata:
+      labels:
+        app: corends
+    spec:
+      containers:
+      - name: coredns
+        image: coredns/coredns:1.11.1
+        args:
+        - -conf
+        - /etc/coredns/Corefile
+        ports:
+        - containerPort: 53
+          name: dns
+          protocol: UDP
+        - containerPort: 53
+          name: dns-tcp
+          protocol: TCP
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/coredns
+          readOnly: true
+      volumes:
+      - name: config-volume
+        configMap:
+          name: coredns-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: coredns
+  annotations:
+    metallb.universe.tf/loadBalancerIPs: 192.168.0.100
+spec:
+  type: LoadBalancer
+  selector:
+    app: coredns
+  ports:
+  - name: dns
+    port: 53
+    protocol: UDP
+  - name: dns-tcp
+    port: 53
+    protocol: TCP
