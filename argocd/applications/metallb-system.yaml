@@ -1,13 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: metallb
+  name: metallb-system
 spec:
   project: default
   source:
-    repoURL: https://github.com/hiroyaonoe/my-k8s-cluster.git
-    targetRevision: main
-    path: argocd/manifests/metallb
+    chart: metallb
+    repoURL: https://metallb.github.io/metallb
+    targetRevision: v0.14.5
+    helm:
+      releaseName: metallb
+      values: |
+        loadBalancerClass: "metallb"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: metallb-system
