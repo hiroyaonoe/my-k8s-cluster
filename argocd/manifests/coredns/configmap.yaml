@@ -8,6 +8,7 @@ data:
       errors
       health
       hosts {
+        192.168.0.190 test
         192.168.0.130 mandolone.node
         192.168.0.140 mandoloncello.node
 

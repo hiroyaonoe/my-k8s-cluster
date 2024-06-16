@@ -1,2 +1,3 @@
 resources:
 - coredns.yaml
+- configmap.yaml
