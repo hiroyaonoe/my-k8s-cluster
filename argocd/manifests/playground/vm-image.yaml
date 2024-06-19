@@ -13,3 +13,51 @@ spec:
   source:
     http:
       url: https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img
+---
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  name: ubuntu-image-2204
+spec:
+  storage:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 5Gi
+    storageClassName: mandoloncello-nfs
+  source:
+    http:
+      url: https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img
+---
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  name: ubuntu-image-2004
+spec:
+  storage:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 5Gi
+    storageClassName: mandoloncello-nfs
+  source:
+    http:
+      url: https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img
+---
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  name: ubuntu-image-1804
+spec:
+  storage:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 5Gi
+    storageClassName: mandoloncello-nfs
+  source:
+    http:
+      url: https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img
