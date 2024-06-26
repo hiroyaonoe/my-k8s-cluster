@@ -84,6 +84,9 @@ spec:
               uid: 1000
             ssh_pwauth: true
             disable_root: false
+            runcmd:
+            - sed -i -e 's/^#AllowAgentForwarding yes/AllowAgentForwarding yes/' /etc/ssh/sshd_config
+            - systemctl reload ssh
           networkData: |
             version: 2
             ethernets:
