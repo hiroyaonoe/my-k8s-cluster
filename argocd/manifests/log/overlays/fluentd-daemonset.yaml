@@ -29,7 +29,10 @@ spec:
           - name: FLUENT_ELASTICSEARCH_USER
             value: "elastic"
           - name: FLUENT_ELASTICSEARCH_PASSWORD
-            value: "41cYa7EPzBS2e45nm1o6JD06"
+            valueFrom:
+              secretKeyRef:
+                name: elasticsearch-es-elastic-user
+                key: elastic
         resources:
           limits:
             memory: 200Mi

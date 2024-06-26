@@ -2,4 +2,3 @@
 resources:
   - https://download.elastic.co/downloads/eck/2.13.0/crds.yaml
   - https://download.elastic.co/downloads/eck/2.13.0/operator.yaml
-  - elasticsearch.yaml

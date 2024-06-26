@@ -1,14 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: fluentd
+  name: log
 spec:
   project: default
   source:
     repoURL: https://github.com/hiroyaonoe/my-k8s-cluster.git
     targetRevision: main
-    path: argocd/manifests/fluentd
+    path: argocd/manifests/log
   destination:
     server: "https://kubernetes.default.svc"
+    namespace: log
   syncPolicy:
     automated: {}
