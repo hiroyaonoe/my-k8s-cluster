@@ -5,11 +5,3 @@ resources:
 patchesStrategicMerge:
   - overlays/fluentd-daemonset.yaml
 
-patches:
-  - path: overlays/fluentd-remove-value.yaml
-    target:
-      group: apps
-      version: v1
-      kind: DaemonSet
-      name: fluentd
-      namespace: kube-system

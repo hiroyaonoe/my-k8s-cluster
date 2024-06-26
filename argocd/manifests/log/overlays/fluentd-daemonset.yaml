@@ -29,10 +29,7 @@ spec:
           - name: FLUENT_ELASTICSEARCH_USER
             value: "elastic"
           - name: FLUENT_ELASTICSEARCH_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: log-es-elastic-user
-                key: elastic
+            value: "74Jqw5741MlKlge1yJe0CM65"
         resources:
           limits:
             memory: 200Mi
