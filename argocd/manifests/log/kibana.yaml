@@ -1,0 +1,9 @@
+apiVersion: kibana.k8s.elastic.co/v1
+kind: Kibana
+metadata:
+  name: log
+spec:
+  version: 7.17.22
+  count: 2
+  elasticsearchRef:
+    name: log
