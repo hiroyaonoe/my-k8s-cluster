@@ -39,7 +39,7 @@ spec:
           # Option to configure containerd/cri-o log format
           # ================================================================
           - name: FLUENT_CONTAINER_TAIL_PARSER_TYPE
-            value: "cri"
+            value: "/^(?<time>.+) (?<stream>stdout|stderr)( (?<logtag>.))? (?<log>.*)$/"
           # Option to configure containerd date time log format
           # ================================================================
           - name: FLUENT_CONTAINER_TAIL_PARSER_TIME_FORMAT
