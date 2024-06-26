@@ -8,7 +8,7 @@ spec:
     spec:
       containers:
       - name: fluentd
-        image: fluent/fluentd-kubernetes-daemonset:v1.17.0-debian-elasticsearch8-1.0
+        image: fluent/fluentd-kubernetes-daemonset:v1.17.0-debian-elasticsearch7-1.0
         env:
           - name:  FLUENT_ELASTICSEARCH_HOST
             value: "log-es-http.log.svc.cluster.local"
