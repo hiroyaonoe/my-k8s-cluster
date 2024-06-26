@@ -35,7 +35,7 @@ spec:
           # Exclude Fluentd logs' to avoid an infine loop
           # ================================================================
           - name: FLUENT_CONTAINER_TAIL_EXCLUDE_PATH
-            value: "/var/log/pods/fluent*"
+            value: "/var/log/containers/fluent*"
           # Option to configure containerd/cri-o log format
           # ================================================================
           - name: FLUENT_CONTAINER_TAIL_PARSER_TYPE
