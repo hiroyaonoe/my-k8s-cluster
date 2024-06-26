@@ -6,7 +6,7 @@ patchesStrategicMerge:
   - overlays/fluentd-daemonset.yaml
 
 patches:
-  - path: fluentd-remove-value.yaml
+  - path: overlays/fluentd-remove-value.yaml
     target:
       group: apps
       version: v1
