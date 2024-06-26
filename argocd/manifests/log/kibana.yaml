@@ -1,3 +1,4 @@
+# # https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-deploy-kibana.html
 apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
 metadata:
@@ -7,3 +8,20 @@ spec:
   count: 2
   elasticsearchRef:
     name: log
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kibana-ingress
+spec:
+  rules:
+  - http:
+      paths:
+        - pathType: Prefix
+          path: /
+          backend:
+            service:
+              name: log-kb-http
+              port: 
+                number: 5601
+    host: kibana.k8s.internal.onoe.dev
