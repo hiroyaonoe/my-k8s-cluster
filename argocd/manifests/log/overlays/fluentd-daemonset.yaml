@@ -46,7 +46,7 @@ spec:
             value: "%Y-%m-%dT%H:%M:%S.%N%:z"
         resources:
           limits:
-            memory: 2Gi
+            memory: 200Mi
           requests:
             cpu: 100m
             memory: 200Mi
