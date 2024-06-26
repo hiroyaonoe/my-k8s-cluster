@@ -1,0 +1,2 @@
+- op: remove
+  path: /spec/containers/0/env/6/value
