@@ -1,5 +1,6 @@
 resources:
   - elasticsearch.yaml
+  - kibana.yaml
   - https://github.com/fluent/fluentd-kubernetes-daemonset/raw/master/fluentd-daemonset-elasticsearch-rbac.yaml
 
 patchesStrategicMerge:
