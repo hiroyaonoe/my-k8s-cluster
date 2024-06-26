@@ -10,5 +10,3 @@ spec:
     path: argocd/manifests/elastic
   destination:
     server: "https://kubernetes.default.svc"
-  syncPolicy:
-    automated: {}
