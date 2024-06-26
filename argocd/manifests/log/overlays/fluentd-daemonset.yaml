@@ -31,12 +31,19 @@ spec:
           - name: FLUENT_ELASTICSEARCH_PASSWORD
             value: "NefL7y5uh0Tv8v5r85212aLn"
           # https://github.com/fluent/fluentd-kubernetes-daemonset/issues/434#issuecomment-752813739
-          - name: FLUENTD_SYSTEMD_CONF
-            value: disable
+          # https://github.com/fluent/fluentd-kubernetes-daemonset/pull/1485
+          # Exclude Fluentd logs' to avoid an infine loop
+          # ================================================================
           - name: FLUENT_CONTAINER_TAIL_EXCLUDE_PATH
-            value: /var/log/containers/fluent*
+            value: "/var/log/pods/fluent*"
+          # Option to configure containerd/cri-o log format
+          # ================================================================
           - name: FLUENT_CONTAINER_TAIL_PARSER_TYPE
-            value: /^(?<time>.+) (?<stream>stdout|stderr)( (?<logtag>.))? (?<log>.*)$/
+            value: "cri"
+          # Option to configure containerd date time log format
+          # ================================================================
+          - name: FLUENT_CONTAINER_TAIL_PARSER_TIME_FORMAT
+            value: "%Y-%m-%dT%H:%M:%S.%N%:z"
         resources:
           limits:
             memory: 2Gi
