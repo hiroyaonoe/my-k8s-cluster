@@ -31,7 +31,7 @@ spec:
           - name: FLUENT_ELASTICSEARCH_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: elasticsearch-es-elastic-user
+                name: log-es-elastic-user
                 key: elastic
         resources:
           limits:
