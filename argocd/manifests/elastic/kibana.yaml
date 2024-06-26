@@ -8,3 +8,20 @@ spec:
   count: 1
   elasticsearchRef:
     name: quickstart
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kibana-ingress
+spec:
+  rules:
+  - http:
+      paths:
+        - pathType: Prefix
+          path: /
+          backend:
+            service:
+              name: log-kb-http
+              port: 
+                number: 5601
+    host: kibana.k8s.internal.onoe.dev

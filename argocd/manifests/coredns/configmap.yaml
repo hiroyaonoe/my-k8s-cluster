@@ -15,6 +15,7 @@ data:
         192.168.0.140 grpc.argocd.k8s.internal.onoe.dev
         192.168.0.140 grafana.k8s.internal.onoe.dev
         192.168.0.140 prometheus.k8s.internal.onoe.dev
+        192.168.0.140 kibana.k8s.internal.onoe.dev
         192.168.0.140 control-plane.k8s.internal.onoe.dev
         fallthrough
       }

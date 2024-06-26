@@ -7,11 +7,12 @@
 ## GUIコンソールエンドポイント一覧
 `*.internal.onoe.dev`を`192.168.0.100`でDNS解決できるように(Tailscaleなどで)設定するか、`etc/hosts`を参考に`/etc/hosts`を書き換えておくこと
 
-| service    | endpoint                                       |
-|:----------:|:----------------------------------------------:|
-| argocd     | https://argocd.k8s.internal.onoe.dev:30443/    |
+| service    | endpoint                                        |
+|:----------:|:-----------------------------------------------:|
+| argocd     | https://argocd.k8s.internal.onoe.dev:30443/     |
 | grafana    | https://grafana.k8s.internal.onoe.dev:30443/    |
 | prometheus | https://prometheus.k8s.internal.onoe.dev:30443/ |
+| kibana     | https://kibana.k8s.internal.onoe.dev:30443/     |
 
 ## クラスタの作成方法
 `kubeadm/tmp_kubernetes.sh`を参考にコマンドを実行してクラスタを作成する
