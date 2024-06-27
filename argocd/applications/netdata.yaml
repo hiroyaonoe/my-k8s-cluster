@@ -7,7 +7,7 @@ spec:
   source:
     chart: netdata
     repoURL: https://netdata.github.io/helmchart/
-    targetRevision: netdata-3.7.94
+    targetRevision: 3.7.94
     helm:
       releaseName: netdata
       values: |
