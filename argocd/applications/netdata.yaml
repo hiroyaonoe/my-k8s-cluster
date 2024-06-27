@@ -5,11 +5,13 @@ metadata:
 spec:
   project: default
   source:
+    # https://github.com/netdata/helmchart/blob/master/charts/netdata/README.md
     chart: netdata
     repoURL: https://netdata.github.io/helmchart/
     targetRevision: 3.7.94
     helm:
       releaseName: netdata
+      # TODO: sealed-secretでslack url管理
       values: |
         replicaCount: 2
         ingress:
