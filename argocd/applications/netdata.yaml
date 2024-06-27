@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: netdata
+spec:
+  project: default
+  source:
+    chart: netdata
+    repoURL: https://netdata.github.io/helmchart/
+    targetRevision: netdata-3.7.94
+    helm:
+      releaseName: netdata
+      values: |
+        replicaCount: 2
+        ingress:
+          enabled: true
+          annotations:
+            kubernetes.io/tls-acme: "true"
+          path: /
+          pathType: Prefix
+          hosts:
+            - netdata.k8s.internal.onoe.dev
+        notifications:
+          slack:
+            webhook_url: ""
+            recipient: ""
+        database:
+          persistence: true
+          ## Set '-' as the storageclass to get a volume from the default storage class.
+          storageclass: "mandoloncello-nfs"
+          volumesize: 5Gi
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: netdata
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
