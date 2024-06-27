@@ -13,6 +13,7 @@
 | grafana    | https://grafana.k8s.internal.onoe.dev:30443/    |
 | prometheus | https://prometheus.k8s.internal.onoe.dev:30443/ |
 | kibana     | https://kibana.k8s.internal.onoe.dev:30443/     |
+| netdata    | https://netdata.k8s.internal.onoe.dev:30443/    |
 
 ## クラスタの作成方法
 `kubeadm/tmp_kubernetes.sh`を参考にコマンドを実行してクラスタを作成する
