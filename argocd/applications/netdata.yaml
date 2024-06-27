@@ -29,7 +29,7 @@ spec:
         database:
           persistence: true
           ## Set '-' as the storageclass to get a volume from the default storage class.
-          storageclass: "mandoloncello-nfs"
+          storageclass: "-"
           volumesize: 5Gi
   destination:
     server: "https://kubernetes.default.svc"
