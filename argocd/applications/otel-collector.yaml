@@ -65,7 +65,7 @@ spec:
                   - zipkin
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: otel
+    namespace: otel-collector
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
