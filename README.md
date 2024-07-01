@@ -7,13 +7,14 @@
 ## GUIコンソールエンドポイント一覧
 `*.internal.onoe.dev`を`192.168.0.100`でDNS解決できるように(Tailscaleなどで)設定するか、`etc/hosts`を参考に`/etc/hosts`を書き換えておくこと
 
-| service    | endpoint                                        |
-|:----------:|:-----------------------------------------------:|
+| service    | endpoint                                  |
+|:----------:|:-----------------------------------------:|
 | argocd     | https://argocd.k8s.internal.onoe.dev/     |
 | grafana    | https://grafana.k8s.internal.onoe.dev/    |
 | prometheus | https://prometheus.k8s.internal.onoe.dev/ |
 | kibana     | https://kibana.k8s.internal.onoe.dev/     |
 | netdata    | https://netdata.k8s.internal.onoe.dev/    |
+| otel-demo  | https://otel-demo.k8s.internal.onoe.dev/  |
 
 ## クラスタの作成方法
 `kubeadm/tmp_kubernetes.sh`を参考にコマンドを実行してクラスタを作成する
