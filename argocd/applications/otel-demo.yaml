@@ -46,6 +46,24 @@ spec:
                 - secretName: demo-tls
                   hosts:
                     - otel-demo.k8s.internal.onoe.dev
+          accountingService:
+            resources:
+              requests:
+                memory: "50Mi"
+              limits:
+                memory: "200Mi"
+          flagd:
+            resources:
+              requests:
+                memory: "50Mi"
+              limits:
+                memory: "200Mi"
+          productCatalogService:
+            resources:
+              requests:
+                memory: "20Mi"
+              limits:
+                memory: "200Mi"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: otel-demo
