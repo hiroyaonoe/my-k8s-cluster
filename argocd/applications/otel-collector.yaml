@@ -1,0 +1,71 @@
+# https://opentelemetry.io/docs/kubernetes/getting-started/
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: otel-collector
+spec:
+  project: default
+  source:
+    # https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-collector
+    chart: opentelemetry-collector
+    repoURL: https://open-telemetry.github.io/opentelemetry-helm-charts/
+    targetRevision: 0.96.0
+    helm:
+      releaseName: opentelemetry-collector
+      # https://www.elastic.co/guide/en/observability/current/apm-open-telemetry-direct.html#apm-connect-open-telemetry-collector
+      # https://www.elastic.co/guide/en/apm/guide/7.17/open-telemetry.html
+      values:
+        config:
+          exporters:
+            debug:
+              verbosity: detailed
+            otlp/elastic: 
+              # Elastic APM server https endpoint without the "https://" prefix
+              endpoint: log-amp-http.log.svc.cluster.local:8200
+              headers:
+                # Elastic APM Server secret token
+                # kubectl get secret/log-apm-token -o go-template='{{index .data "secret-token" | base64decode}}' -n log
+                Authorization: "Bearer Bii14lZY969c3T4D48DNp0dg"
+          processors: 
+            batch: {}
+            memory_limiter:
+              check_interval: 1s
+              limit_mib: 2000
+          service:
+            pipelines:
+              logs:
+                exporters:
+                  - debug
+                  - otlp/elastic
+                processors:
+                  - memory_limiter
+                  - batch
+                receivers:
+                  - otlp
+              metrics:
+                exporters:
+                  - debug
+                  - otlp/elastic
+                processors:
+                  - memory_limiter
+                  - batch
+                receivers:
+                  - otlp
+                  - prometheus
+              traces:
+                exporters:
+                  - debug
+                  - otlp/elastic
+                processors:
+                  - memory_limiter
+                  - batch
+                receivers:
+                  - otlp
+                  - jaeger
+                  - zipkin
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: otel
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
