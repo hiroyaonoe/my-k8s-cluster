@@ -9,7 +9,7 @@ spec:
   template:
     spec:
       containers:
-      - command:
+      - args:
         - /usr/local/bin/argocd-server
         - --insecure
         name: argocd-server
