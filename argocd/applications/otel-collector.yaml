@@ -20,6 +20,11 @@ spec:
           repository: otel/opentelemetry-collector-k8s
         command:
           name: otelcol-k8s
+        service:
+          # Enable the creation of a Service.
+          # By default, it's enabled on mode != daemonset.
+          # However, to enable it on mode = daemonset, its creation must be explicitly enabled
+          enabled: true
         config:
           exporters:
             debug:
