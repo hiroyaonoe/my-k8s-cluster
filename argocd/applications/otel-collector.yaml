@@ -26,7 +26,7 @@ spec:
               verbosity: detailed
             otlp/elastic: 
               # Elastic APM server https endpoint without the "https://" prefix
-              endpoint: log-amp-http.log.svc.cluster.local:8200
+              endpoint: log-apm-http.log.svc.cluster.local:8200
               headers:
                 # Elastic APM Server secret token
                 # kubectl get secret/log-apm-token -o go-template='{{index .data "secret-token" | base64decode}}' -n log
