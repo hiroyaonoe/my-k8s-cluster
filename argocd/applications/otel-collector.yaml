@@ -40,15 +40,6 @@ spec:
               limit_mib: 2000
           service:
             pipelines:
-              logs:
-                exporters:
-                  - debug
-                  - otlp/elastic
-                processors:
-                  - memory_limiter
-                  - batch
-                receivers:
-                  - otlp
               metrics:
                 exporters:
                   - debug
@@ -58,7 +49,6 @@ spec:
                   - batch
                 receivers:
                   - otlp
-                  - prometheus
               traces:
                 exporters:
                   - debug
@@ -68,8 +58,6 @@ spec:
                   - batch
                 receivers:
                   - otlp
-                  - jaeger
-                  - zipkin
   destination:
     server: "https://kubernetes.default.svc"
     namespace: otel-collector
