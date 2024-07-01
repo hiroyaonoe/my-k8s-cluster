@@ -15,6 +15,7 @@ spec:
       # https://www.elastic.co/guide/en/observability/current/apm-open-telemetry-direct.html#apm-connect-open-telemetry-collector
       # https://www.elastic.co/guide/en/apm/guide/7.17/open-telemetry.html
       valuesObject:
+        mode: daemonset
         image:
           repository: otel/opentelemetry-collector-k8s
         command:
