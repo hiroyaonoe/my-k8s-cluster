@@ -86,6 +86,11 @@ kubectl replace --raw "/api/v1/namespaces/calico-system/finalize" -f mygitignore
 ### Multus/Calicoが壊れた時
 `/etc/cni/net.d/`配下のファイルのうち、関係あるものだけ消す
 `/opt/cni/bin/multus-shim`を消す
+```bash
+# kubectl create job tmp-kill-multus-$(export LC_ALL=C; cat /dev/urandom | tr -dc a-z0-9 | head -c10) --from=cronjob/kill-multus -n kube-system
+sudo rm /etc/cni/net.d/00-multus.conf
+sudo rm /opt/cni/bin/multus-shim
+```
 関係ありそうなMultus/CalicoのPodを削除して再起動する
 ContainerCreatingで止まっているPodも削除して再起動する
 Multus/Calicoのクリーンインストールはめんどいので最終手段にする

@@ -1,0 +1,34 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: kill-multus
+  namespace: kube-system
+spec:
+  schedule: "00 6 * * 0" # every Sunday at 6:00
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+          - name: kill-multus
+            image: ubuntu:latest
+            command:
+            - /bin/sh
+            - -c
+            - rm /host/etc/cni/net.d/00-multus.conf && rm /host/opt/cni/bin/multus-shim && echo "killed multus"
+            volumeMounts:
+            - mountPath: /host/etc/cni/net.d
+              name: cni
+            - mountPath: /host/opt/cni/bin
+              name: cnibin
+          volumes:
+            - hostPath:
+                path: /etc/cni/net.d
+                type: ""
+              name: cni
+            - hostPath:
+                path: /opt/cni/bin
+                type: ""
+              name: cnibin
+
