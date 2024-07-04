@@ -26,6 +26,11 @@ spec:
           # However, to enable it on mode = daemonset, its creation must be explicitly enabled
           enabled: true
         config:
+          receivers:
+            otlp:
+              protocols:
+                grpc:
+                http:
           exporters:
             debug:
               verbosity: detailed
