@@ -74,6 +74,14 @@ kubectl get secret -n monitoring prometheus-grafana -o jsonpath="{.data.admin-pa
 prom-operator
 ```
 
+### Vaultの設定
+```bash
+# https://developer.hashicorp.com/vault/docs/platform/k8s/helm/run#cli-initialize-and-unseal
+kubectl exec -it vault-0 -n vault -- /bin/sh
+# https://support.hashicorp.com/hc/en-us/articles/8552873602451-Vault-on-Kubernetes-and-context-deadline-exceeded-errors
+VAULT_CLIENT_TIMEOUT=300s vault operator init
+```
+
 ## Tips
 ### Calico再インストールのTips
 https://komeiy.hatenablog.com/entry/2019/07/28/232356
