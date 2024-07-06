@@ -23,6 +23,9 @@ spec:
             tls:
               - hosts:
                 - vault.k8s.internal.onoe.dev
+        ha:
+          enabled: true
+          replicas: 2
         ui:
           enabled: true
   destination:
