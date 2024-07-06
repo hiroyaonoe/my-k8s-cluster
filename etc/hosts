@@ -9,4 +9,5 @@
 192.168.0.140 kibana.k8s.internal.onoe.dev
 192.168.0.140 netdata.k8s.internal.onoe.dev
 192.168.0.140 otel-demo.k8s.internal.onoe.dev
+192.168.0.140 vault.k8s.internal.onoe.dev
 192.168.0.140 control-plane.k8s.internal.onoe.dev

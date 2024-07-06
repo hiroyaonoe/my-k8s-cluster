@@ -15,6 +15,7 @@
 | kibana     | https://kibana.k8s.internal.onoe.dev/     |
 | netdata    | https://netdata.k8s.internal.onoe.dev/    |
 | otel-demo  | https://otel-demo.k8s.internal.onoe.dev/  |
+| vault      | https://vault.k8s.internal.onoe.dev/      |
 
 ## クラスタの作成方法
 `kubeadm/tmp_kubernetes.sh`を参考にコマンドを実行してクラスタを作成する

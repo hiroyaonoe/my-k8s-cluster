@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vault
+spec:
+  project: default
+  source:
+    chart: hashicorp/vault
+    repoURL: https://helm.releases.hashicorp.com
+    targetRevision: 0.28.0
+    helm:
+      releaseName: vault
+      valuesObject:
+        server:
+          ingress:
+            enabled: true
+            annotations:
+              kubernetes.io/tls-acme: "true"
+            pathType: Prefix
+            hosts:
+              - host: vault.k8s.internal.onoe.dev
+                paths: ["/"]
+            tls:
+              - hosts:
+                - vault.k8s.internal.onoe.dev
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: vault
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
