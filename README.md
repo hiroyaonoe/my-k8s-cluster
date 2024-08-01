@@ -5,7 +5,7 @@
 - argocdからsync
 
 ## GUIコンソールエンドポイント一覧
-`*.internal.onoe.dev`を`192.168.0.100`でDNS解決できるように(Tailscaleなどで)設定するか、`etc/hosts`を参考に`/etc/hosts`を書き換えておくこと
+`*.internal.onoe.dev`を`192.168.0.100`でDNS解決できるように設定する(`/etc/resolv.con`の先頭に`nameserver 192.168.0.100`を足す)か、`etc/hosts`を参考に`/etc/hosts`を書き換えておくこと
 
 | service    | endpoint                                  |
 |:----------:|:-----------------------------------------:|
