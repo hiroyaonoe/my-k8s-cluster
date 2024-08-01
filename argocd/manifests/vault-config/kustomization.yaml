@@ -1,4 +1,2 @@
-configMapGenerator:
-  - name: vault-userconfig
-    files:
-      - admin-policy.hcl
+resources:
+- config.yaml
