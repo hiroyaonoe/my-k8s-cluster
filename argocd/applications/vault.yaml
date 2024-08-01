@@ -24,11 +24,11 @@ spec:
               - hosts:
                 - vault.k8s.internal.onoe.dev
           volumes:
-            - name: vault-config
+            - name: vault-userconfig
               configMap:
-                name: vault-config
+                name: vault-userconfig
           volumeMounts:
-            - name: vault-config
+            - name: vault-userconfig
               mountPath: /etc/vault/userconfig
               readOnly: true
         ui:
