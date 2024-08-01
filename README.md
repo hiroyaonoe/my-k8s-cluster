@@ -80,6 +80,13 @@ prom-operator
 kubectl exec -it vault-0 -n vault -- /bin/sh
 # https://support.hashicorp.com/hc/en-us/articles/8552873602451-Vault-on-Kubernetes-and-context-deadline-exceeded-errors
 VAULT_CLIENT_TIMEOUT=300s vault operator init
+vault operator unseal
+vault operator unseal
+vault operator unseal
+vault login
+vault auth enable userpass
+vault write /auth/userpass/users/admin password=admin policies=admin
+vault policy write admin /etc/vault/userconfig/admin-policy.hcl
 ```
 
 ## Tips

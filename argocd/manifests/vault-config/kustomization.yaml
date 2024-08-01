@@ -1,0 +1,4 @@
+configMapGenerator:
+  - name: vault-config
+    files:
+      - admin-policy.hcl
