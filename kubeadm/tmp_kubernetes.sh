@@ -33,6 +33,9 @@ lsmod | grep overlay
 
 sysctl net.bridge.bridge-nf-call-iptables net.bridge.bridge-nf-call-ip6tables net.ipv4.ip_forward
 
+# sudo vim /etc/security/limits.conf 
+# * soft nofile 65536
+# * hard nofile 65536
 
 # https://github.com/containerd/containerd/blob/main/docs/getting-started.md
 wget https://github.com/containerd/containerd/releases/download/v1.7.15/containerd-1.7.15-linux-amd64.tar.gz
