@@ -47,6 +47,12 @@ data:
       capabilities = ["create", "read", "update", "delete", "list", "sudo"]
     }
 
+    # List, create, update, and delete key/value secrets
+    path "kv/*"
+    {
+      capabilities = ["create", "read", "update", "delete", "list", "sudo"]
+    }
+
     # Manage secret engines
     path "sys/mounts/*"
     {
