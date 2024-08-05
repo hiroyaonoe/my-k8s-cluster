@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: argo-repo-server-token
+  annotations:
+    kubernetes.io/service-account.name: "argo-repo-server"
+type: kubernetes.io/service-account-token

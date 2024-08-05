@@ -3,6 +3,7 @@ resources:
 - app-of-apps.yaml
 - ingress.yaml
 - service-monitor.yaml
+- sa-token.yaml
 
 patchesStrategicMerge:
 - overlays/argocd-cm.yaml
